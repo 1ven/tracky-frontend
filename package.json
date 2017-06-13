@@ -10,8 +10,8 @@
     "watch:production": "cross-env NODE_ENV=production webpack-dev-server",
     "bundle": "npm run check && npm run clean && cross-env NODE_ENV=production webpack",
     "clean": "rimraf ./static",
-    "check": "npm run flow",
-    "flow": "flow check"
+    "check": "npm run types",
+    "types": "flow check"
   },
   "repository": {
     "type": "git",
