@@ -1,7 +1,15 @@
-const path = require('path');
-const webpack = require('webpack');
+/**
+ * Copyright (c) 2017, Ivan Mironchik
+ * All rights reserved.
+ *
+ * This source code is licensed under the license found in the LICENSE file in
+ * the root directory of this source tree.
+ */
 
-module.exports = {
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+
+export default {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, './static'),
@@ -18,4 +26,7 @@ module.exports = {
       }
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin()
+  ],
 };
