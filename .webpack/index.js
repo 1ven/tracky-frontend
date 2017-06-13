@@ -9,10 +9,12 @@
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
+const resolve = (...str) => path.resolve(process.cwd(), ...str);
+
 export default {
-  entry: './src/index.js',
+  entry: resolve('./src/index.js'),
   output: {
-    path: path.resolve(__dirname, './static'),
+    path: resolve('./static'),
     filename: 'bundle.js',
   },
   module: {

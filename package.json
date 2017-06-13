@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm start:development",
-    "start:development": "cross-env NODE_ENV=development webpack-dev-server",
-    "start:production": "cross-env NODE_ENV=production webpack-dev-server",
+    "start": "npm run watch:development",
+    "watch:development": "cross-env NODE_ENV=development webpack-dev-server",
+    "watch:production": "cross-env NODE_ENV=production webpack-dev-server",
     "bundle": "cross-env NODE_ENV=production webpack"
   },
   "repository": {
