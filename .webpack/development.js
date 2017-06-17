@@ -7,6 +7,7 @@
  */
 
 export default {
+  devtool: "cheap-module-eval-source-map",
   devServer: {
     stats: {
       children: false,
