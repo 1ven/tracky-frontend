@@ -6,4 +6,14 @@
  * the root directory of this source tree.
  */
 
-export default {};
+export default {
+  devServer: {
+    stats: {
+      children: false,
+      chunks: false,
+      hash: false,
+      version: false,
+      assets: false
+    }
+  }
+};
