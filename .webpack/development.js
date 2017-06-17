@@ -7,5 +7,7 @@
  */
 
 export default {
-  entry: './src/index.js',
+  devServer: {
+    noInfo: true
+  }
 };
