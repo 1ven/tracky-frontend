@@ -23,6 +23,7 @@
     "babel-loader": "^7.0.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-flow": "^6.23.0",
+    "babel-preset-react": "^6.24.1",
     "babel-register": "^6.24.1",
     "cross-env": "^5.0.1",
     "flow-bin": "^0.48.0",
@@ -49,5 +50,9 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
   }
 }
