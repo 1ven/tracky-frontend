@@ -36,10 +36,9 @@
     "webpack-dev-server": "^2.4.5"
   },
   "scripts": {
-    "start": "npm run watch",
-    "check": "npm run types",
+    "start": "cross-env NODE_ENV=development webpack-dev-server",
     "build": "npm run clean && cross-env NODE_ENV=production webpack",
-    "watch": "cross-env NODE_ENV=development webpack-dev-server",
+    "check": "npm run types",
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf ./static",
     "types": "flow check",
