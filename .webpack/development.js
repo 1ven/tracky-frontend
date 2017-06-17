@@ -6,8 +6,4 @@
  * the root directory of this source tree.
  */
 
-export default {
-  devServer: {
-    noInfo: true
-  }
-};
+export default {};
