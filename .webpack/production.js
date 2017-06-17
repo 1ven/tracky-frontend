@@ -6,6 +6,4 @@
  * the root directory of this source tree.
  */
 
-export default {
-  entry: './src/index.js',
-};
+export default {};
