@@ -6,16 +6,17 @@
  * the root directory of this source tree.
  */
 
-import path from 'path';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+import path from "path";
+import webpack from "webpack";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 
 const resolve = (...str) => path.resolve(process.cwd(), ...str);
 
 export default {
-  entry: resolve('./src/index.js'),
+  entry: resolve("./src/index.js"),
   output: {
-    path: resolve('./static'),
-    filename: 'bundle.js',
+    path: resolve("./static"),
+    filename: "bundle.js"
   },
   module: {
     rules: [
@@ -23,12 +24,17 @@ export default {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: 'babel-loader',
-        },
+          loader: "babel-loader"
+        }
       }
-    ],
+    ]
   },
   plugins: [
-    new HtmlWebpackPlugin()
-  ],
+    new HtmlWebpackPlugin(),
+    new webpack.DefinePlugin({
+      "process.env": {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+      }
+    })
+  ]
 };
