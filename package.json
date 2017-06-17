@@ -36,13 +36,13 @@
     "webpack-dev-server": "^2.4.5"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run watch:development",
+    "check": "npm run types",
+    "bundle": "npm run clean && cross-env NODE_ENV=production webpack",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "watch:development": "cross-env NODE_ENV=development webpack-dev-server",
     "watch:production": "cross-env NODE_ENV=production webpack-dev-server",
-    "bundle": "npm run clean && cross-env NODE_ENV=production webpack",
     "clean": "rimraf ./static",
-    "check": "npm run types",
     "types": "flow check",
     "precommit": "lint-staged"
   },
