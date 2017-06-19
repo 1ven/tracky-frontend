@@ -1,16 +1,13 @@
 /**
- * Copyright (c) 2017, Ivan Mironchik
- * All rights reserved.
- *
- * This source code is licensed under the license found in the LICENSE file in
- * the root directory of this source tree.
- *
  * @flow
  */
 
 import React from "react";
 import ReactDOM from "react-dom";
+import { nest } from "recompose";
+import Router from "./core/router";
+import Root from "./modules";
 
-const App = () => <div>Hello world</div>;
+const App = nest(Router, Root);
 
 ReactDOM.render(<App />, document.getElementById("root"));
