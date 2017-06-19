@@ -6,24 +6,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import createHistory from "history/createBrowserHistory";
 import { nest, withProps } from "recompose";
-import { combineReducers } from "redux";
-import {
-  Router,
-  reducer as router,
-  createRouterMiddleware
-} from "./core/router";
+import { ConnectedRouter } from "react-router-redux";
 import { Provider } from "./core/redux";
-import Root, { reducer as modules } from "./modules";
+import Root from "./modules";
 
-const history = createHistory();
+const withHistory = withProps({ history: createHistory() });
 
-const App = nest(
-  withProps({
-    middlewares: [createRouterMiddleware(history)],
-    reducer: combineReducers({ modules, router })
-  })(Provider),
-  withProps({ history })(Router),
-  Root
-);
+const App = nest(withHistory(Provider), withHistory(ConnectedRouter), Root);
 
 ReactDOM.render(<App />, document.getElementById("root"));
