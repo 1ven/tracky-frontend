@@ -4,9 +4,12 @@
 
 import React from "react";
 import { Route, Switch } from "react-router-dom";
+import { combineReducers } from "redux";
 import Main from "./main";
-import Repo from "./repo";
-import User from "./user";
+import Repo, { reducer as repo } from "./repo";
+import User, { reducer as user } from "./user";
+
+export const reducer = combineReducers({ repo, user });
 
 export default () =>
   <Switch>

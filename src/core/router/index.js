@@ -1,13 +1,3 @@
-/**
- * @flow
- */
+import Router from "./Router";
 
-import { BrowserRouter } from "react-router-dom";
-import React from "react";
-
-export default ({ children }: Props) =>
-  <BrowserRouter>{children}</BrowserRouter>;
-
-type Props = {
-  children: React.Element<*>
-};
+export { Router };
