@@ -3,7 +3,19 @@
  */
 
 import React from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { createAction, createReducer } from "redux-act";
 
-export const reducer = () => ({});
+const push = createAction("push");
 
-export default () => <div>Repo</div>;
+export const reducer = createReducer(
+  {
+    [push]: state => 5
+  },
+  {}
+);
+
+export default connect()(({ dispatch }) =>
+  <div onClick={() => dispatch(push())}>Repo</div>
+);

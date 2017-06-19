@@ -4,6 +4,18 @@
 
 import React from "react";
 
-export const reducer = () => ({});
+import { connect } from "react-redux";
+import { createAction, createReducer } from "redux-act";
 
-export default () => <div>User</div>;
+const push = createAction("push");
+
+export const reducer = createReducer(
+  {
+    [push]: state => 2
+  },
+  {}
+);
+
+export default connect()(({ dispatch }) =>
+  <div onClick={() => dispatch(push())}>User</div>
+);
