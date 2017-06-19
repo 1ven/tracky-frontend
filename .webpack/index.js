@@ -30,5 +30,8 @@ export default {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV)
       }
     })
-  ]
+  ],
+  resolve: {
+    modules: [resolve("./src"), "node_modules"]
+  }
 };

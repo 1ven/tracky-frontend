@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import { routerReducer as router, routerMiddleware } from "react-router-redux";
-import { reducer as modules } from "../../modules";
+import { reducer as modules } from "modules/index";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
