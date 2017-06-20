@@ -10,7 +10,6 @@ import {
   not,
   replace
 } from "ramda";
-import join from "url-join";
 
 const notSlash = compose(not, equals("/"));
 const after = flip(concat);
