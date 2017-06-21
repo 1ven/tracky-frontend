@@ -14,6 +14,7 @@ import {
 const notSlash = compose(not, equals("/"));
 const after = flip(concat);
 
+// TODO: should accept object like {user: 'data'} and template string
 const resolve = compose(
   ifElse(compose(notSlash, tail), after("/"), identity),
   ifElse(compose(notSlash, head), concat("/"), identity),
