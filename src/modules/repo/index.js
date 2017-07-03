@@ -16,6 +16,10 @@ export const reducer = createReducer(
   {}
 );
 
+export const selectors = {
+  getName: state => state.name
+};
+
 export default connect()(({ dispatch }) =>
   <div onClick={() => dispatch(push())}>Repo</div>
 );
