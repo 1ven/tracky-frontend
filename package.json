@@ -44,7 +44,7 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.ts": [
+    "*.{ts,tsx}": [
       "prettier --write",
       "git add"
     ]
