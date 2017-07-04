@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import createHistory from "history/createBrowserHistory";
+import { BrowserRouter } from "react-router-dom";
 import { nest, withProps } from "recompose";
 import Root from "./modules";
 
-const withHistory = withProps({ history: createHistory() });
+const App = nest(BrowserRouter, Root);
 
-ReactDOM.render(<Root />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));

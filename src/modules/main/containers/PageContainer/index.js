@@ -1,3 +1,1 @@
-import Page from "../../components/Page";
-
-export default Page;
+export { default } from "../../components/Page";
