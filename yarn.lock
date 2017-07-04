@@ -20,6 +20,10 @@
   version "8.0.7"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.7.tgz#fb0ad04b5b6f6eabe0372a32a8f1fbba5c130cae"
 
+"@types/ramda@^0.24.1":
+  version "0.24.1"
+  resolved "https://registry.yarnpkg.com/@types/ramda/-/ramda-0.24.1.tgz#473695821e3c013b1894fc2f8b06614ee62005a9"
+
 "@types/react-dom@^15.5.1":
   version "15.5.1"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-15.5.1.tgz#f3c3e14c682785923c7d64583537df319442dec1"
