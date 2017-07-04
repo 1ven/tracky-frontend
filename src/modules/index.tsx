@@ -1,7 +1,7 @@
-import React from "react";
+import * as React from "react";
 import { Route, Switch } from "react-router-dom";
 import Main from "./main";
-import paths from "./paths";
+const paths = require("./paths");
 
 export default () =>
   <Switch>

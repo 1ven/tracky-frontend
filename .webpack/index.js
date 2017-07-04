@@ -5,7 +5,7 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 const resolve = (...str) => path.resolve(process.cwd(), ...str);
 
 export default {
-  entry: resolve("./src/index.js"),
+  entry: resolve("./src/index.tsx"),
   output: {
     path: resolve("./static"),
     filename: "bundle.js"
@@ -13,10 +13,10 @@ export default {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
+        test: /\.tsx?$/,
+        include: resolve("./src"),
         use: {
-          loader: "babel-loader"
+          loader: "ts-loader"
         }
       }
     ]
@@ -32,6 +32,7 @@ export default {
     })
   ],
   resolve: {
+    extensions: [".ts", ".tsx", ".js", ".json"],
     modules: [resolve("./src"), "node_modules"]
   }
 };
