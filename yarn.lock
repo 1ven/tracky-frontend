@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@types/history@*":
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/@types/history/-/history-4.6.0.tgz#093d67ed780d889c9543f6dca24ebee0b6b9fc45"
+
 "@types/node@^8.0.7":
   version "8.0.7"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.7.tgz#fb0ad04b5b6f6eabe0372a32a8f1fbba5c130cae"
@@ -12,9 +16,30 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-router-dom@^4.0.5":
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/@types/react-router-dom/-/react-router-dom-4.0.5.tgz#638f89ca9053a0f3937d1604f2ed63dac6172ece"
+  dependencies:
+    "@types/history" "*"
+    "@types/react" "*"
+    "@types/react-router" "*"
+
+"@types/react-router@*":
+  version "4.0.12"
+  resolved "https://registry.yarnpkg.com/@types/react-router/-/react-router-4.0.12.tgz#7ccf3433741393e22ede149b5cd733abfe594ffc"
+  dependencies:
+    "@types/history" "*"
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@^15.0.34":
   version "15.0.34"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-15.0.34.tgz#c4f7235f3d245216a706887b7d1ffedaf5b1dc06"
+
+"@types/recompose@^0.23.1":
+  version "0.23.1"
+  resolved "https://registry.yarnpkg.com/@types/recompose/-/recompose-0.23.1.tgz#010249a4bafadd33ea263c99e265e7d523968798"
+  dependencies:
+    "@types/react" "*"
 
 abbrev@1:
   version "1.1.0"
