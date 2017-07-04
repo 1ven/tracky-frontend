@@ -55,6 +55,10 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.1.1",
-    "recompose": "^0.23.5"
+    "recompose": "^0.23.5",
+    "swifty": "^0.0.11",
+    "swifty-api": "^0.0.3",
+    "swifty-devtools": "^0.0.2",
+    "swifty-react": "^0.0.5"
   }
 }
