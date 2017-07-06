@@ -1,1 +1,1 @@
-export { default } from "./containers/PageContainer";
+export { default } from "./providers/PageProvider";

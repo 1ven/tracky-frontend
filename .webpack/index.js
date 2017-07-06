@@ -8,7 +8,8 @@ export default {
   entry: resolve("./src/index.tsx"),
   output: {
     path: resolve("./static"),
-    filename: "bundle.js"
+    filename: "bundle.js",
+    publicPath: "/"
   },
   module: {
     rules: [
@@ -18,12 +19,22 @@ export default {
         use: {
           loader: "ts-loader"
         }
+      },
+      {
+      // TODO: Move to `development.js`
+      /**
+       * Provides ability to debug 3rd-party libraries.
+       */
+        test: /\.js$/,
+        use: ["source-map-loader"],
+        enforce: "pre"
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: resolve("./src/index.html")
+      template: resolve("./src/index.html"),
+      hash: true
     }),
     new webpack.DefinePlugin({
       "process.env": {

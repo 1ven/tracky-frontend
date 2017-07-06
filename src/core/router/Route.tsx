@@ -6,6 +6,6 @@ export default ({ path, exact, component }: Props) =>
 
 export type Props = {
   path: string;
-  exact: boolean;
   component: any;
+  exact?: boolean;
 };

@@ -33,6 +33,7 @@
     "prettier": "^1.4.4",
     "ramda": "^0.24.1",
     "rimraf": "^2.6.1",
+    "source-map-loader": "^0.2.1",
     "ts-loader": "^2.2.2",
     "typescript": "^2.4.1",
     "webpack": "^2.6.1",
@@ -53,13 +54,14 @@
     ]
   },
   "dependencies": {
+    "ramda-fantasy": "^0.8.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.1.1",
     "recompose": "^0.23.5",
-    "swifty": "^0.0.11",
-    "swifty-api": "^0.0.3",
-    "swifty-devtools": "^0.0.2",
-    "swifty-react": "^0.0.5"
+    "swifty": "^0.0.14",
+    "swifty-api": "^0.0.11",
+    "swifty-devtools": "^0.0.3",
+    "swifty-react": "^0.0.6"
   }
 }
