@@ -1,1 +1,1 @@
-export { default } from "./providers/PageProvider";
+export { default } from "./Provider";
