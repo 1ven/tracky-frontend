@@ -21,6 +21,10 @@ export default {
         }
       },
       {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"]
+      },
+      {
       // TODO: Move to `development.js`
       /**
        * Provides ability to debug 3rd-party libraries.
