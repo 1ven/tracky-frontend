@@ -7,6 +7,8 @@ import { initDevTools } from "swifty-devtools";
 import { reducer$ as apiReducer$ } from "./api";
 import Root from "./modules";
 
+// avoid this
+// should not have global store
 const rootReducer$ = combineReducers({
   api: apiReducer$
 });

@@ -4,6 +4,7 @@ import { createEntry } from "core/utils";
 export default createEntry({
   url: "/users/:name/repos",
   method: "GET"
+  // mapModel: compose(withLocalStorage, withDevTools)
 });
 
 export type Repo = {
