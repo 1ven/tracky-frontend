@@ -1,5 +1,5 @@
 import { compose, mapProps, lifecycle, withProps } from "recompose";
-import { withRouter, RouteComponentProps } from "react-router";
+import { RouteComponentProps } from "react-router";
 import { prop } from "ramda";
 // import { Maybe } from "ramda-fantasy";
 import { load } from "core/decorators";
@@ -8,7 +8,6 @@ import View, { Props } from "./View";
 // import { getRepos } from "./selectors";
 
 export default compose<Props, {}>(
-  withRouter,
   mapProps(({ match }: RouteComponentProps<Params>) => ({
     name: match.params.name
   })),
