@@ -1,10 +1,6 @@
-import { Selector } from "swifty";
 import { Maybe } from "ramda-fantasy";
 
-export default <S, P, R>(selector: Selector<S, P, R>) => (
-  state: S,
-  props?: P
-) => {
+export default selector => (state, props?) => {
   const result = selector(state, props);
 
   if (typeof result === "undefined") {

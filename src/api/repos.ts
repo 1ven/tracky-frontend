@@ -1,11 +1,7 @@
-import { State as S } from "swifty-api";
-import { createEntry } from "core/utils";
-
-export default createEntry({
+export default {
   url: "/users/:name/repos",
   method: "GET"
-  // mapModel: compose(withLocalStorage, withDevTools)
-});
+};
 
 export type Repo = {
   id: number;
@@ -14,4 +10,3 @@ export type Repo = {
 };
 
 export type Response = Repo[];
-export type State = S<Response>;

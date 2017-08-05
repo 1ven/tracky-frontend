@@ -1,31 +1,33 @@
-import { compose, mapProps, lifecycle } from "recompose";
-import { connect } from "swifty-react";
-import { getData, getIsFetching } from "swifty-api";
+import { compose, mapProps, lifecycle, withProps } from "recompose";
+import { withRouter, RouteComponentProps } from "react-router";
 import { prop } from "ramda";
-import { Maybe } from "ramda-fantasy";
-import { withRouter, RouterProps } from "core/router";
+// import { Maybe } from "ramda-fantasy";
 import { load } from "core/decorators";
-import repos, { State as ReposState } from "api/repos";
+// import repos from "api/repos";
 import View, { Props } from "./View";
-import { getRepos } from "./selectors";
+// import { getRepos } from "./selectors";
 
 export default compose<Props, {}>(
   withRouter,
-  mapProps(({ match }: RouterProps<Params>) => ({
+  mapProps(({ match }: RouteComponentProps<Params>) => ({
     name: match.params.name
   })),
-  load(({ name }: Params) =>
-    repos.request$.next({
-      params: {
-        name
-      }
-    })
-  ),
-  connect([repos.reducer$], ([reposState]: [ReposState]) => {
-    return {
-      repos: getRepos(reposState).getOrElse([]),
-      isLoading: getIsFetching(reposState)
-    };
+  // load(({ name }: Params) =>
+  // repos.request$.next({
+  //   params: {
+  //     name
+  //   }
+  // })
+  // ),
+  // connect([repos.reducer$], ([reposState]: [ReposState]) => {
+  //   return {
+  //     repos: getRepos(reposState).getOrElse([]),
+  //     isLoading: getIsFetching(reposState)
+  //   };
+  // })
+  withProps({
+    repos: ["repo a", "repo b", "repo c"],
+    isLoading: false
   })
 )(View);
 

@@ -4,6 +4,8 @@ import Main from "./main";
 import User from "./user";
 const paths = require("./paths");
 
+export const reducer = (state = {}, action) => state;
+
 export default () =>
   <Switch>
     <Route path={paths.index} exact component={Main} />

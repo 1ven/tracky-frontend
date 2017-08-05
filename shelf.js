@@ -9,9 +9,7 @@ const rootApi = createApi({
         url: "/entities/tickets/",
         method: "GET",
         // prob have regular reducer
-        // reduce: {
-        //   [type(readAllTickets, "request")]: (state, action) => state
-        // },
+        // reducer: (state, action) => {},
         config
       }
     },
@@ -27,7 +25,7 @@ const rootApi = createApi({
 const reducer = (state, action) => {}
 const reducer2 = (state, action) => {}
 
-const mergedReducer = mergeReducers(reducer, reducer2);
+const reducer3 = composeReducers(reducer, reducer2);
 
 // check redux middlewares and enhancers
 
@@ -68,6 +66,10 @@ const enhancer3 = (spec) => (api) => {
 //     call
 //   }
 // }
+
+// enhancers:
+// - normalizr
+// - url as (state) => string function? // or 'params' prop = { merchantId: (state) => any}
 
 const readAllTickets = api => api.entities.tickets.readAll;
 
