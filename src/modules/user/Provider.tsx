@@ -8,9 +8,6 @@ import View, { Props } from "./View";
 // import { getRepos } from "./selectors";
 
 export default compose<Props, {}>(
-  mapProps(({ match }: RouteComponentProps<Params>) => ({
-    name: match.params.name
-  })),
   // load(({ name }: Params) =>
   // repos.request$.next({
   //   params: {
@@ -24,10 +21,11 @@ export default compose<Props, {}>(
   //     isLoading: getIsFetching(reposState)
   //   };
   // })
-  withProps({
+  withProps(({ match }: RouteComponentProps<Params>) => ({
+    name: match.params.name,
     repos: ["repo a", "repo b", "repo c"],
     isLoading: false
-  })
+  }))
 )(View);
 
 export type Params = {
