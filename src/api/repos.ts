@@ -3,6 +3,8 @@ export default {
   method: "GET"
 };
 
+export const selector = api => api.repos;
+
 export type Repo = {
   id: number;
   full_name: string;
