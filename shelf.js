@@ -1,4 +1,29 @@
-const middleware = createShelfMiddleware(rootApi);
+const twitterApi = createApi({
+  tweets: {
+    read: {
+      url: "/tweets",
+      method: "GET"
+    }
+  }
+}, config, {
+  selector: (state) => state.twitter,
+  context: 'twitter/abc'
+})
+
+const gitHubApi = createApi({
+  repos: {
+    read: {
+      url: "/repos",
+      method: "GET"
+    }
+  }
+}, config, {
+  selector: (state) => state.gitHub
+})
+
+const middleware = createShelfMiddleware([gitHubApi, twitterApi]);
+
+const middleware = createShelfMiddleware([rootApi]);
 
 // redux-shelf should implement vanilla redux logic
 // if need normalizr support - do this with enhancers
@@ -20,7 +45,9 @@ const rootApi = createApi({
       }
     }
   }
-}, config, enhancer);
+}, config, { enhancer });
+
+const apiReducer = createApiReducer(rootApi);
 
 const reducer = (state, action) => {}
 const reducer2 = (state, action) => {}
@@ -58,12 +85,13 @@ const enhancer3 = (spec) => (api) => {
 
 // rootApi = {
 //   readAll: {
-//     path: 'api/entities/tickets/readAll'
 //     selectors: {
 //       isFetching: ...
 //     },
 //     reducer,
-//     call
+//     call,
+//     constants,
+//     actions,
 //   }
 // }
 
