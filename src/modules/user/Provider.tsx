@@ -1,26 +1,19 @@
 import { compose, mapProps, lifecycle, withProps } from "recompose";
 import { RouteComponentProps } from "react-router";
 import { prop } from "ramda";
+import { connect } from "react-redux";
+import { request } from "core/api";
 // import { Maybe } from "ramda-fantasy";
 import { load } from "core/decorators";
-// import repos from "api/repos";
+import { selector as reposSelector } from "api/repos";
 import View, { Props } from "./View";
 // import { getRepos } from "./selectors";
 
 export default compose<Props, {}>(
-  // load(({ name }: Params) =>
-  // repos.request$.next({
-  //   params: {
-  //     name
-  //   }
-  // })
-  // ),
-  // connect([repos.reducer$], ([reposState]: [ReposState]) => {
-  //   return {
-  //     repos: getRepos(reposState).getOrElse([]),
-  //     isLoading: getIsFetching(reposState)
-  //   };
-  // })
+  connect(void 0, {
+    requestUser: (name: string) => request(reposSelector, { params: { name } })
+  }),
+  load(({ match, requestUser }) => requestUser(match.params.name)),
   withProps(({ match }: RouteComponentProps<Params>) => ({
     name: match.params.name,
     repos: ["repo a", "repo b", "repo c"],

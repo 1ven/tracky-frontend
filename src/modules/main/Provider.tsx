@@ -8,7 +8,7 @@ import Page, { Props } from "./View";
 const paths = require("modules/paths");
 
 export default compose<Props, {}>(
-  connect(null, {
+  connect(void 0, {
     onSubmit: compose(replace, joinUrl(paths.user), prop("user"))
   }),
   reduxForm({
