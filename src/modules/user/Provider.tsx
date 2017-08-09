@@ -11,8 +11,7 @@ import { getReposNames } from "./selectors";
 
 export default compose<Props, {}>(
   withProps(({ match }: RouteComponentProps<Params>) => ({
-    name: match.params.name,
-    repos: []
+    name: match.params.name
   })),
   connect(
     createStructuredSelector({
