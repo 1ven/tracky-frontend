@@ -1,13 +1,14 @@
 import api from "api";
 import { curry } from "ramda";
-import * as shelf from "";
+import * as helpers from "redux-api-helpers";
 
-const transform = fn => selector => curry(fn(selector(api)));
+const transform = fn =>
+  curry((selector, ...args) => fn(selector(api), ...args));
 
-export const request = transform(shelf.request);
-export const success = transform(shelf.success);
-export const failure = transform(shelf.failure);
+export const request = transform(helpers.request);
+export const success = transform(helpers.success);
+export const failure = transform(helpers.failure);
 
-export const select = transform(shelf.select);
-export const type = transform(shelf.type);
-export const reducer = transform(shelf.reducer);
+export const select = transform(helpers.select);
+export const type = transform(helpers.type);
+// export const reducer = transform(helpers.reducer);
