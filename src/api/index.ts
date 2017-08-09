@@ -10,7 +10,8 @@ const api = createApi(
     endpoint: "https://api.github.com"
   },
   {
-    selector: prop("api")
+    selector: prop("api"),
+    context: "api"
   }
 );
 

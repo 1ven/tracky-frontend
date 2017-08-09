@@ -25,10 +25,6 @@ export default history =>
       applyMiddleware(
         routerMiddleware(history),
         apiMiddleware(api),
-        // (state) => (next) => (action) => {
-        //   console.log(action);
-        //   return undefined as any
-        // }
         epicMiddleware(epic, {
           adapter: mostAdapter
         })
