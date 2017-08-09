@@ -2,7 +2,9 @@ import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import { routerReducer, routerMiddleware } from "react-router-redux";
 import { reducer as formReducer } from "redux-form";
 import { createMiddleware as apiMiddleware } from "redux-api-helpers";
-import { reducer as modulesReducer } from "modules/index";
+import { createEpicMiddleware as epicMiddleware } from "redux-observable";
+import mostAdapter from "redux-observable-adapter-most";
+import { reducer as modulesReducer, epic } from "modules/index";
 import api, { reducer as apiReducer } from "api";
 
 declare var window: {
@@ -20,6 +22,16 @@ export default history =>
       api: apiReducer
     }),
     composeEnhancers(
-      applyMiddleware(routerMiddleware(history), apiMiddleware(api))
+      applyMiddleware(
+        routerMiddleware(history),
+        apiMiddleware(api),
+        // (state) => (next) => (action) => {
+        //   console.log(action);
+        //   return undefined as any
+        // }
+        epicMiddleware(epic, {
+          adapter: mostAdapter
+        })
+      )
     )
   );

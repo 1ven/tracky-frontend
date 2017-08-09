@@ -10,6 +10,7 @@ const reposApi = select(reposSelector);
 // TODO: keep generic selectors in api/repos
 // keep UI specific selectors in corresponding module, ex "user"
 
+// move to api
 export const getReposNames = createSelector(
   [safe(reposApi("data"))],
   Maybe.maybe([], map(prop("name")))
