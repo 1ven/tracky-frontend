@@ -1,3 +1,4 @@
+import { prop } from "ramda";
 import { createApi, createReducer } from "redux-api-helpers";
 import repos from "./repos";
 
@@ -7,6 +8,9 @@ const api = createApi(
   },
   {
     endpoint: "https://api.github.com"
+  },
+  {
+    selector: prop("api")
   }
 );
 
