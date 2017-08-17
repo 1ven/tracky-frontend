@@ -1,17 +1,31 @@
 import { compose, withProps } from "recompose";
-import { prop } from "ramda";
-import { reduxForm } from "redux-form";
-import { replace } from "react-router-redux";
 import { connect } from "react-redux";
-import { joinUrl } from "core/utils";
-import Page, { Props } from "./View";
+import { createStructuredSelector } from "reselect";
+import { reduxForm, getFormValues } from "redux-form";
+import { load } from "core/decorators";
+import { request, select } from "core/api";
+import { getEntry as getReposEntry } from "api/repos";
 const paths = require("modules/paths");
+import { setVisible } from "./actions";
+import { getVisible } from "./reducer";
+import { getReposNames } from "./selectors";
+import Page, { Props } from "./View";
 
 export default compose<Props, {}>(
-  connect(void 0, {
-    onSubmit: compose(replace, joinUrl(paths.user), prop("user"))
-  }),
+  connect(
+    createStructuredSelector({
+      isLoading: select(getReposEntry, "isFetching"),
+      formData: getFormValues("username"),
+      items: getReposNames,
+      visible: getVisible
+    }),
+    {
+      onSubmit: ({ username: name }) =>
+        request(getReposEntry, { params: { name } }),
+      setVisible
+    }
+  ),
   reduxForm({
-    form: "user"
+    form: "username"
   })
 )(Page);

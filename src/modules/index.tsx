@@ -2,18 +2,16 @@ import * as React from "react";
 import { combineReducers } from "redux";
 import { combineEpics } from "redux-observable";
 import { Route, Switch } from "react-router";
-import Main from "./main";
-import User, { epic as userEpic, reducer as userReducer } from "./user";
+import Main, { epic as mainEpic, reducer as mainReducer } from "./main";
 const paths = require("./paths");
 
 export const reducer = combineReducers({
-  user: userReducer
+  main: mainReducer
 });
 
 export default () =>
   <Switch>
-    <Route path={paths.index} exact component={Main as any} />
-    <Route path={paths.user + "/:name"} component={User as any} />
+    <Route path={paths.main} exact component={Main as any} />
   </Switch>;
 
-export const epic = combineEpics(userEpic);
+export const epic = combineEpics(mainEpic);

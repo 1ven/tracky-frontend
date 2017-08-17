@@ -9,9 +9,11 @@ export default (state = initialState, action) => {
     case SET_VISIBLE:
       return {
         ...state,
-        visible: action.payload.len
+        visible: action.payload
       };
     default:
       return state;
   }
 };
+
+export const getVisible = state => state.modules.main.visible;

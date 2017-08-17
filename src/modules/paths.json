@@ -1,5 +1,3 @@
 {
-  "index": "/",
-  "repo": "/repo",
-  "user": "/user"
+  "main": "/"
 }
