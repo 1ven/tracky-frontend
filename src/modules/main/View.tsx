@@ -1,44 +1,29 @@
 import * as React from "react";
-import { times } from "ramda";
 import Input from "shared/components/Input";
 
-export default ({
-  items = [],
-  isLoading,
-  handleSubmit,
-  visible,
-  setVisible
-}: Props) =>
+export default ({ items = [], isLoading, handleSubmit, onRemove }: Props) =>
   <div>
     <form onSubmit={handleSubmit}>
-      <Input name="username" placeholder="Enter username" />
+      <Input name="title" placeholder="Enter ticket title" />
     </form>
-    <select onChange={e => setVisible(+e.target.value)} value={visible}>
-      {times(
-        i =>
-          <option value={i} key={i}>
-            {i}
-          </option>,
-        10
-      )}
-    </select>
     <div>
       {isLoading
         ? "Loading..."
         : !items.length
           ? "No items"
-          : items.filter((_, i) => i < visible).map((n, i) =>
+          : items.map((item, i) =>
               <div key={i}>
-                {n}
+                {item.title}
+                &nbsp;
+                <span onClick={() => onRemove(item.id)}>x</span>
               </div>
             )}
     </div>
   </div>;
 
 export type Props = {
-  items: string[];
   handleSubmit: any;
+  items: any[];
   isLoading: boolean;
-  visible: number;
-  setVisible: (value: number) => number;
+  onRemove: (id: number) => void;
 };

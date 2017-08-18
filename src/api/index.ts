@@ -1,13 +1,13 @@
 import { prop } from "ramda";
 import { createApi, createReducer } from "redux-api-helpers";
-import repos from "./repos";
+import tickets from "./tickets";
 
 const api = createApi(
   {
-    repos
+    tickets
   },
   {
-    endpoint: "https://api.github.com"
+    endpoint: "http://localhost:3000"
   },
   {
     selector: prop("api"),

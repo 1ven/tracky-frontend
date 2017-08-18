@@ -1,31 +1,38 @@
-import { compose, withProps } from "recompose";
+import { compose } from "recompose";
 import { connect } from "react-redux";
+import { reduxForm } from "redux-form";
 import { createStructuredSelector } from "reselect";
-import { reduxForm, getFormValues } from "redux-form";
 import { load } from "core/decorators";
 import { request, select } from "core/api";
-import { getEntry as getReposEntry } from "api/repos";
-const paths = require("modules/paths");
-import { setVisible } from "./actions";
-import { getVisible } from "./reducer";
-import { getReposNames } from "./selectors";
+import { getEntry as getReadAll } from "api/tickets/readAll";
+import { getEntry as getCreate } from "api/tickets/create";
+import { getEntry as getRemove } from "api/tickets/remove";
+import { createTicketForm } from "./meta";
 import Page, { Props } from "./View";
+const paths = require("modules/paths");
 
 export default compose<Props, {}>(
   connect(
     createStructuredSelector({
-      isLoading: select(getReposEntry, "isFetching"),
-      formData: getFormValues("username"),
-      items: getReposNames,
-      visible: getVisible
+      isLoading: select(getReadAll, "isFetching"),
+      items: select(getReadAll, "data")
     }),
     {
-      onSubmit: ({ username: name }) =>
-        request(getReposEntry, { params: { name } }),
-      setVisible
+      request: () => request(getReadAll),
+      onSubmit: ({ title }) =>
+        request(getCreate, {
+          body: {
+            title
+          }
+        }),
+      onRemove: (id: number) =>
+        request(getRemove, {
+          params: { id }
+        })
     }
   ),
+  load(({ request }) => request()),
   reduxForm({
-    form: "username"
+    form: createTicketForm
   })
 )(Page);

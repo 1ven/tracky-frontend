@@ -1,6 +1,9 @@
-import { F } from "ramda";
-import { type } from "core/api";
+import { compose, equals, prop } from "ramda";
+import { reset } from "redux-form";
+import { type } from "core/form";
+import { createTicketForm } from "./meta";
 
-export default action$ => {
-  return action$.tap(({ type }) => console.log(type)).filter(F);
-};
+export default action$ =>
+  action$.filter(isSubmitAction).map(() => reset(createTicketForm));
+
+const isSubmitAction = compose(equals(type("submitSuccess")), prop("type"));
