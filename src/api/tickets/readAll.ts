@@ -1,4 +1,4 @@
-import { Ticket } from "./";
+import { Ticket } from "tracky-types";
 import { getEntry as getCreate } from "./create";
 import { getEntry as getRemove } from "./remove";
 import { type } from "core/api";

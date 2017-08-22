@@ -1,4 +1,4 @@
-import { Ticket } from "./";
+import { Ticket } from "tracky-types";
 
 export default {
   url: "/v1/entities/tickets",
@@ -7,7 +7,8 @@ export default {
 
 export type Response = Ticket;
 export type Request = {
-  title: string;
+  title: Ticket["title"];
+  description?: Ticket["description"];
 };
 
 export const getEntry = api => api.tickets.create;
