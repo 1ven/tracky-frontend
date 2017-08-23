@@ -55,8 +55,6 @@
     ]
   },
   "dependencies": {
-    "glamor": "^2.20.40",
-    "glamorous": "^4.3.1",
     "history": "^4.6.3",
     "most": "^1.5.1",
     "ramda-fantasy": "^0.8.0",
@@ -70,6 +68,7 @@
     "redux-form": "^7.0.3",
     "redux-observable": "^0.15.0",
     "redux-observable-adapter-most": "^0.0.2",
-    "reselect": "^3.0.1"
+    "reselect": "^3.0.1",
+    "styled-components": "^2.1.2"
   }
 }
