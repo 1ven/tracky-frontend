@@ -1,6 +1,6 @@
 import { compose } from "recompose";
 import { load } from "core/decorators";
-import { request, select } from "core/api";
+import { isLoading, request, select } from "core/api";
 import { withForm } from "core/form";
 import { connect } from "core/redux";
 import { getEntry as getReadAll } from "api/tickets/readAll";
@@ -13,7 +13,7 @@ const paths = require("pages/paths");
 export default compose<Props, {}>(
   connect(
     {
-      isLoading: select(getReadAll, "isFetching"),
+      isLoading: isLoading(getReadAll),
       items: select(getReadAll, "data")
     },
     {

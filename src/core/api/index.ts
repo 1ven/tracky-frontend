@@ -11,3 +11,9 @@ export const failure = transform(helpers.failure);
 export const select = transform(helpers.select);
 export const type = transform(helpers.type);
 // export const reducer = transform(helpers.reducer);
+
+export const isLoading = getApiEntry =>
+  createSelector(
+    [select(getApiEntry, "isFetching"), select(getApiEntry, "lastUpdated")],
+    (isFetching, lastUpdated) => (!lastUpdated ? true : isFetching)
+  );
