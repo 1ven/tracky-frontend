@@ -2,8 +2,9 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { nest } from "recompose";
 import { Provider } from "./core/redux";
-import Root from "./modules";
+import Global from "./shared/global";
+import Pages from "./pages";
 
-const App = nest(Provider, Root);
+export const App = nest(Provider, Global, Pages);
 
 ReactDOM.render(<App />, document.getElementById("root"));
