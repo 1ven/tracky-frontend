@@ -1,11 +1,6 @@
 import * as React from "react";
-import glamorous from "glamorous";
+import styled from "styled-components";
 
-export default ({ children }) =>
-  <Wrap>
-    {children}
-  </Wrap>;
-
-const Wrap = glamorous.div({
-  height: "100%"
-});
+export default styled.div`
+  height: 100%;
+`;
