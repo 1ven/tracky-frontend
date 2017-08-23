@@ -1,5 +1,5 @@
 import * as React from "react";
-import Input from "shared/components/Input";
+import Input from "components/shared/Input";
 
 export default ({ items = [], isLoading, handleSubmit, onRemove }: Props) =>
   <div>
