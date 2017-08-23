@@ -1,1 +1,1 @@
-export const createTicketForm = "modules/main/createTicketForm";
+export const createTicketForm = "pages/main/createTicketForm";
