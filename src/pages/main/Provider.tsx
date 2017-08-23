@@ -9,7 +9,7 @@ import { getEntry as getCreate } from "api/tickets/create";
 import { getEntry as getRemove } from "api/tickets/remove";
 import { createTicketForm } from "./meta";
 import Page, { Props } from "./View";
-const paths = require("modules/paths");
+const paths = require("pages/paths");
 
 export default compose<Props, {}>(
   connect(
