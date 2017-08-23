@@ -3,21 +3,31 @@ import { combineReducers } from "redux";
 import { prop } from "ramda";
 import { createStructuredSelector } from "reselect";
 import { compose, branch, renderComponent } from "recompose";
+import { load } from "core/decorators";
 import { connect } from "core/redux";
+import { select, request, isLoading } from "core/api";
+import { getEntry as getReadAll } from "api/projects/readAll";
 import Overlay from "./Overlay";
-import Loader, { reducer as loaderReducer, getLoading } from "./Loader";
+import Loader from "./Loader";
 
-export default connect({
-  isLoading: getLoading
-})(
-  ({ children, isLoading }) =>
+export default compose(
+  connect(
+    {
+      isLoading: isLoading(getReadAll),
+      projects: select(getReadAll, "data")
+    },
+    {
+      request: () => request(getReadAll)
+    }
+  ),
+  load(({ request }) => request())
+)(
+  ({ children, isLoading, projects }: any) =>
     isLoading
       ? <Loader />
-      : <Overlay>
+      : <Overlay projects={projects}>
           {children}
         </Overlay>
 );
 
-export const reducer = combineReducers({
-  loader: loaderReducer
-});
+export const reducer = () => ({});
