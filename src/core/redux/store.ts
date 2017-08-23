@@ -5,6 +5,7 @@ import { createMiddleware as apiMiddleware } from "redux-api-helpers";
 import { createEpicMiddleware as epicMiddleware } from "redux-observable";
 import mostAdapter from "redux-observable-adapter-most";
 import { reducer as pagesReducer, epic } from "pages/index";
+import { reducer as globalReducer } from "shared/global";
 import api, { reducer as apiReducer } from "api";
 
 declare var window: {
@@ -17,9 +18,12 @@ export default history =>
   createStore(
     combineReducers({
       pages: pagesReducer,
-      router: routerReducer,
-      form: formReducer,
-      api: apiReducer
+      api: apiReducer,
+      global: globalReducer,
+      lib: combineReducers({
+        form: formReducer,
+        router: routerReducer
+      })
     }),
     composeEnhancers(
       applyMiddleware(

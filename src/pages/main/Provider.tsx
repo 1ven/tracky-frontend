@@ -1,9 +1,9 @@
 import { compose } from "recompose";
 import { connect } from "react-redux";
-import { reduxForm } from "redux-form";
 import { createStructuredSelector } from "reselect";
 import { load } from "core/decorators";
 import { request, select } from "core/api";
+import { withForm } from "core/form";
 import { getEntry as getReadAll } from "api/tickets/readAll";
 import { getEntry as getCreate } from "api/tickets/create";
 import { getEntry as getRemove } from "api/tickets/remove";
@@ -32,7 +32,7 @@ export default compose<Props, {}>(
     }
   ),
   load(({ request }) => request()),
-  reduxForm({
+  withForm({
     form: createTicketForm
   })
 )(Page);
