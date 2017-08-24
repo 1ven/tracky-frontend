@@ -57,6 +57,7 @@
   "dependencies": {
     "history": "^4.6.3",
     "most": "^1.5.1",
+    "polished": "^1.4.1",
     "ramda-fantasy": "^0.8.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
