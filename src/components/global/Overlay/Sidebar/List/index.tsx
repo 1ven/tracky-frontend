@@ -1,18 +1,8 @@
 import * as React from "react";
 import styled from "styled-components";
+import { renderChildren } from "core/utils";
 
-export default ({ children }) =>
-  <div>
-    {children instanceof Array
-      ? children.map((item: React.ReactNode, i) =>
-          <Item key={i}>
-            {item}
-          </Item>
-        )
-      : <Item>
-          {children}
-        </Item>}
-  </div>;
+export default ({ children }) => renderChildren(Item, children);
 
 const Item = styled.div`
   margin-bottom: 20px;

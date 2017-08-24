@@ -1,4 +1,5 @@
 import * as React from "react";
+import styled from "styled-components";
 import { combineReducers } from "redux";
 import { prop } from "ramda";
 import { createStructuredSelector } from "reselect";
@@ -9,6 +10,7 @@ import { select, request, isLoading } from "core/api";
 import { getEntry as getReadAll } from "api/projects/readAll";
 import Overlay from "./Overlay";
 import Loader from "./Loader";
+import Modals, { reducer as modalsReducer } from "./Modals";
 
 export default compose(
   connect(
@@ -25,9 +27,19 @@ export default compose(
   ({ children, isLoading, projects }: any) =>
     isLoading
       ? <Loader />
-      : <Overlay projects={projects}>
-          {children}
-        </Overlay>
+      : <Wrap>
+          <Overlay projects={projects}>
+            {children}
+          </Overlay>
+          <Modals />
+        </Wrap>
 );
 
-export const reducer = () => ({});
+const Wrap = styled.div`
+  display: flex;
+  height: 100%;
+`;
+
+export const reducer = combineReducers({
+  modals: modalsReducer
+});
