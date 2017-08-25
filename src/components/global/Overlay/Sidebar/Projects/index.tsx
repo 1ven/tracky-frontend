@@ -1,13 +1,15 @@
 import * as React from "react";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { primary } from "core/colors";
 import { Project } from "tracky-types";
+import { primary } from "core/colors";
+import { replaceParams } from "core/utils";
+import { paths } from "components/pages/projects";
 
 export default ({ items, activeId }: Props) =>
   <div>
     {items.map(({ name, id }, i: number) =>
-      // Use react router's Link for activivity instead
-      <Project key={i} isActive={id === activeId}>
+      <Project key={i} to={replaceParams(paths.item, { id })}>
         {name}
       </Project>
     )}
@@ -17,19 +19,19 @@ export type Props = {
   activeId?: Project["id"];
 };
 
-const Project = styled.div`
+const Project = styled(NavLink)`
   padding: 6px 14px;
   font-size: 14px;
   cursor: pointer;
+  display: block;
+  text-decoration: none;
   &:hover {
     background-color: #f5f5f5;
   }
-  ${({ isActive }: ProjectProps) =>
-    isActive &&
-    `
+  &.active {
     background-color: ${primary};
     color: #fff;
-  `};
+  }
 `;
 type ProjectProps = {
   isActive?: boolean;

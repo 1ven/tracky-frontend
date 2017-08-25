@@ -1,1 +1,3 @@
-export const createTicketForm = "global/overlay/footer/createTicketForm";
+export const forms = {
+  createTicketForm: "global/overlay/footer/createTicketForm"
+};

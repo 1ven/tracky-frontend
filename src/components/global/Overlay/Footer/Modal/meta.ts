@@ -1,1 +1,3 @@
-export const createTicketModal = "global/overlay/footer/createTicketModal";
+export const modals = {
+  createTicketModal: "global/overlay/footer/createTicketModal"
+};

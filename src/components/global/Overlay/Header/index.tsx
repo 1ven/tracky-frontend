@@ -1,9 +1,9 @@
 import * as React from "react";
-import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 import { header } from "core/colors";
 import { Container } from "components/shared/kit/Grid";
-import { paths } from "components/pages/meta";
+import { paths } from "components/pages";
 
 export default () =>
   <Wrap>

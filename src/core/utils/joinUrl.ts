@@ -1,24 +1,6 @@
-import {
-  ifElse,
-  flip,
-  head,
-  tail,
-  compose,
-  identity,
-  concat,
-  equals,
-  not,
-  replace
-} from "ramda";
+export default (l: string, r: string) =>
+  withoutTrailingSlash(l) + "/" + withoutLeadingSlash(r);
 
-const notSlash = compose(not, equals("/"));
-const after = flip(concat);
-
-// TODO: should accept object like {user: 'data'} and template string
-const resolve = compose(
-  ifElse(compose(notSlash, tail), after("/"), identity),
-  ifElse(compose(notSlash, head), concat("/"), identity),
-  replace(/\/+/g, "/")
-);
-
-export default compose(concat, resolve);
+const withoutTrailingSlash = str => str.replace(/^(.+?)\/*?$/, "$1");
+// TODO: cut multiple leading slashes
+const withoutLeadingSlash = str => str.replace(/^\/?(.*?)$/, "$1");

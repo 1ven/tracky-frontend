@@ -4,7 +4,7 @@ import { connect } from "core/redux";
 import { select } from "core/api";
 import { getEntry as getReadAll } from "api/projects/readAll";
 import View from "./View";
-import { createTicketForm } from "./meta";
+import { forms } from "./meta";
 
 export default compose(
   connect(
@@ -15,5 +15,5 @@ export default compose(
       onSubmit: data => console.log(data)
     })
   ),
-  withForm({ form: createTicketForm })
+  withForm({ form: forms.createTicketForm })
 )(View);
