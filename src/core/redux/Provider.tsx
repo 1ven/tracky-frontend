@@ -5,6 +5,7 @@ import { ConnectedRouter } from "react-router-redux";
 import createStore from "./store";
 
 export default withHistory(({ children, history }: Props) =>
+  // createStore is calling on every render?
   <Provider store={createStore(history)}>
     <ConnectedRouter history={history}>
       {children}

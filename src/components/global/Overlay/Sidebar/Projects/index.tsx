@@ -25,6 +25,7 @@ const Project = styled(NavLink)`
   cursor: pointer;
   display: block;
   text-decoration: none;
+  color: #000;
   &:hover {
     background-color: #f5f5f5;
   }

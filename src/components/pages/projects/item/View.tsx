@@ -1,9 +1,7 @@
 import * as React from "react";
 import Input from "components/shared/kit/Input";
 
-export default () => <div>Project page</div>;
-
-const View = ({ items = [], isLoading, onRemove }: Props) =>
+export default ({ items = [], isLoading }: Props) =>
   <div>
     {isLoading
       ? "Loading..."
@@ -12,8 +10,6 @@ const View = ({ items = [], isLoading, onRemove }: Props) =>
         : items.map((item, i) =>
             <div key={i}>
               {item.title}
-              &nbsp;
-              <span onClick={() => onRemove(item.id)}>x</span>
             </div>
           )}
   </div>;
@@ -21,5 +17,4 @@ const View = ({ items = [], isLoading, onRemove }: Props) =>
 export type Props = {
   items: any[];
   isLoading: boolean;
-  onRemove: (id: number) => void;
 };
