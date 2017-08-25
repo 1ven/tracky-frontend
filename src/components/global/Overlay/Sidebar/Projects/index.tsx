@@ -21,6 +21,9 @@ const Project = styled.div`
   padding: 6px 14px;
   font-size: 14px;
   cursor: pointer;
+  &:hover {
+    background-color: #f5f5f5;
+  }
   ${({ isActive }: ProjectProps) =>
     isActive &&
     `

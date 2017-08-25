@@ -3,8 +3,7 @@ import { combineReducers } from "redux";
 import { combineEpics } from "redux-observable";
 import { Route, Switch } from "react-router";
 import Main, { epic as mainEpic } from "./main";
-// paths should be in meta?
-const paths = require("./paths");
+import { paths } from "./meta";
 
 export const reducer = () => ({});
 
