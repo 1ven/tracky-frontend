@@ -10,6 +10,7 @@ export default ({ projects, handleSubmit, isSaving }: any) =>
   <Form onSubmit={handleSubmit}>
     <Input name="title" placeholder="Title" />
     <Select name="project">
+      <option value="">Select a project</option>
       {projects.map((p, i) =>
         <option key={i} value={p.id}>
           {p.name}
