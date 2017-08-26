@@ -6,10 +6,10 @@ import Input from "components/shared/kit/Input";
 import Textarea from "components/shared/kit/Textarea";
 import Button from "components/shared/kit/Button";
 
-export default ({ projects, handleSubmit }: any) =>
+export default ({ projects, handleSubmit, isSaving }: any) =>
   <Form onSubmit={handleSubmit}>
     <Input name="title" placeholder="Title" />
-    <Select name="projects">
+    <Select name="project">
       {projects.map((p, i) =>
         <option key={i} value={p.id}>
           {p.name}
@@ -17,7 +17,9 @@ export default ({ projects, handleSubmit }: any) =>
       )}
     </Select>
     <Textarea name="description" placeholder="Description" rows="8" />
-    <Button type="submit">Submit</Button>
+    <Button type="submit" isLoading={isSaving}>
+      Submit
+    </Button>
   </Form>;
 
 export type Props = {

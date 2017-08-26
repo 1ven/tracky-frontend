@@ -2,10 +2,19 @@ import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import { routerReducer, routerMiddleware } from "react-router-redux";
 import { reducer as formReducer } from "redux-form";
 import { createMiddleware as apiMiddleware } from "redux-api-helpers";
-import { createEpicMiddleware as epicMiddleware } from "redux-observable";
+import {
+  createEpicMiddleware as epicMiddleware,
+  combineEpics
+} from "redux-observable";
 import mostAdapter from "redux-observable-adapter-most";
-import { reducer as pagesReducer, epic } from "components/pages/index";
-import { reducer as globalReducer } from "components/global";
+import {
+  reducer as pagesReducer,
+  epic as pagesEpic
+} from "components/pages/index";
+import {
+  reducer as globalReducer,
+  epic as globalEpic
+} from "components/global";
 import api, { reducer as apiReducer } from "api";
 
 declare var window: {
@@ -29,7 +38,7 @@ export default history =>
       applyMiddleware(
         routerMiddleware(history),
         apiMiddleware(api),
-        epicMiddleware(epic, {
+        epicMiddleware(combineEpics(pagesEpic, globalEpic), {
           adapter: mostAdapter
         })
       )
