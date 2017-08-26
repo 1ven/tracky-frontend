@@ -3,7 +3,6 @@ import { load } from "core/decorators";
 import { isLoading, request, select } from "core/api";
 import { connect } from "core/redux";
 import { getEntry as getReadAll } from "api/tickets/readAll";
-import { getEntry as getCreate } from "api/tickets/create";
 import { getEntry as getRemove } from "api/tickets/remove";
 import Page, { Props } from "./View";
 
@@ -14,18 +13,11 @@ export default compose<Props, {}>(
       items: select(getReadAll, "data")
     },
     {
-      request: () => request(getReadAll),
-      onSubmit: ({ title }) =>
-        request(getCreate, {
-          body: {
-            title
-          }
-        }),
       onRemove: (id: number) =>
         request(getRemove, {
           params: { id }
         })
     }
   ),
-  load(({ request }) => request())
+  load(() => request(getReadAll))
 )(Page);
