@@ -5,9 +5,16 @@ import { Project } from "tracky-types";
 import { primary } from "core/colors";
 import { replaceParams } from "core/utils";
 import { paths } from "components/pages/projects";
+import Icon from "components/shared/kit/Icon";
+import Title from "../Title";
 
 export default ({ items, activeId }: Props) =>
   <div>
+    <Title>
+      <TitleWrap>
+        Projects<Circle />
+      </TitleWrap>
+    </Title>
     {items.map(({ name, id }, i: number) =>
       <Project key={i} to={replaceParams(paths.item, { id })}>
         {name}
@@ -18,6 +25,17 @@ export type Props = {
   items: Project[];
   activeId?: Project["id"];
 };
+
+const TitleWrap = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const Circle = styled(Icon).attrs({ name: "add_circle_outline" })`
+  margin-left: auto;
+  cursor: pointer;
+  font-size: 12px;
+`;
 
 const Project = styled(NavLink)`
   padding: 6px 14px;
