@@ -27,4 +27,4 @@ export default compose(
     }
   ),
   withForm({ form: forms.createTicketForm })
-)(View);
+)(View as any);
