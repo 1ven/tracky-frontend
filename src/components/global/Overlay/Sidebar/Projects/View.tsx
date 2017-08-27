@@ -8,11 +8,11 @@ import { paths } from "components/pages/projects";
 import Icon from "components/shared/kit/Icon";
 import Title from "../Title";
 
-export default ({ items, activeId }: Props) =>
+export default ({ items, activeId, onAdd }: Props) =>
   <div>
     <Title>
       <TitleWrap>
-        Projects<Circle />
+        Projects<Circle onClick={() => onAdd()} />
       </TitleWrap>
     </Title>
     {items.map(({ name, id }, i: number) =>
@@ -23,6 +23,7 @@ export default ({ items, activeId }: Props) =>
   </div>;
 export type Props = {
   items: Project[];
+  onAdd: Function;
   activeId?: Project["id"];
 };
 
