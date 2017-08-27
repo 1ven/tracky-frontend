@@ -1,11 +1,10 @@
 import { compose } from "recompose";
-import { withForm } from "core/form";
+import { withForm, forms } from "core/form";
 import { connect } from "core/redux";
 import { select, request } from "core/api";
 import { getEntry as getReadAll } from "api/projects/readAll";
 import { getEntry as getCreate } from "api/projects/tickets/create";
 import View from "./View";
-import { forms } from "./meta";
 
 export default compose(
   connect(
@@ -26,5 +25,5 @@ export default compose(
         })
     }
   ),
-  withForm({ form: forms.createTicketForm })
+  withForm({ form: forms.CREATE_TICKET })
 )(View as any);

@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { Project } from "tracky-types";
 import { primary } from "core/colors";
+import { paths } from "core/router";
 import { replaceParams } from "core/utils";
-import { paths } from "components/pages/projects";
 import Icon from "components/shared/kit/Icon";
 import Title from "../Title";
 
@@ -16,7 +16,7 @@ export default ({ items, activeId, onAdd }: Props) =>
       </TitleWrap>
     </Title>
     {items.map(({ name, id }, i: number) =>
-      <Project key={i} to={replaceParams(paths.item, { id })}>
+      <Project key={i} to={replaceParams(paths.PROJECT, { id })}>
         {name}
       </Project>
     )}

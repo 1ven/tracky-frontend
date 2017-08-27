@@ -7,11 +7,11 @@ import Textarea from "components/shared/kit/Textarea";
 import Button from "components/shared/kit/Button";
 import Box from "components/shared/modal/Box";
 import Back from "components/shared/modal/Back";
-import { modals } from "./meta";
+import { modals } from "components/global/Modals";
 
 export default ({ projects, handleSubmit, isSaving }) =>
   <Back>
-    <Box title="Create ticket" name={modals.createTicketModal}>
+    <Box title="Create a ticket" name={modals.CREATE_TICKET}>
       <Form onSubmit={handleSubmit}>
         <Input name="title" placeholder="Title" />
         <Select name="project">

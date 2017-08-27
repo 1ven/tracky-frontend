@@ -2,15 +2,15 @@ import * as React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { header } from "core/colors";
+import { paths } from "core/router";
 import { Container } from "components/shared/kit/Grid";
-import { paths } from "components/pages";
 
 export default () =>
   <Wrap>
     <Container>
       <InnerWrap>
         <Item>
-          <Link to={paths.main} exact>
+          <Link to={paths.MAIN} exact>
             My tickets
           </Link>
         </Item>

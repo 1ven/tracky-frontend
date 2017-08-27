@@ -1,13 +1,10 @@
 import * as React from "react";
 import { connect } from "core/redux";
 import { getModals } from "./reducer";
+import * as names from "./names";
 
-import CreateTicket, {
-  modals as ticketModals
-} from "components/global/Overlay/Footer/Modal";
-import CreateProject, {
-  modals as projectModals
-} from "components/global/Overlay/Sidebar/Projects/Modal";
+import CreateTicket from "components/global/Overlay/Footer/Modal";
+import CreateProject from "components/global/Overlay/Sidebar/Projects/Modal";
 
 export default connect({
   items: getModals
@@ -16,8 +13,8 @@ export default connect({
     {items.map(
       (name, i) =>
         ({
-          [ticketModals.createTicketModal]: <CreateTicket key={i} />,
-          [projectModals.createProjectModal]: <CreateProject key={i} />
+          [names.CREATE_TICKET]: <CreateTicket key={i} />,
+          [names.CREATE_PROJECT]: <CreateProject key={i} />
         }[name])
     )}
   </div>
