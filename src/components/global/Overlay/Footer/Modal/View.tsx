@@ -5,9 +5,7 @@ import Select from "components/shared/kit/Select";
 import Input from "components/shared/kit/Input";
 import Textarea from "components/shared/kit/Textarea";
 import Button from "components/shared/kit/Button";
-import Box from "components/shared/modal/Box";
-import Back from "components/shared/modal/Back";
-import { modals } from "components/global/Modals";
+import { Box, Back, modals } from "components/global/Modals";
 
 export default ({ projects, handleSubmit, isSaving }) =>
   <Back>
