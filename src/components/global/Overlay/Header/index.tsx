@@ -1,14 +1,17 @@
 import * as React from "react";
+import { nest } from "recompose";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { header } from "core/colors";
 import { paths } from "core/router";
 import { Container } from "components/shared/kit/Grid";
+import MenuLink from "./MenuLink";
 
-export default () =>
+export default ({ onMenuClick, isSidebarVisible }) =>
   <Wrap>
     <Container>
       <InnerWrap>
+        <MenuLink onClick={onMenuClick} isActive={isSidebarVisible} />
         <Item>
           <Link to={paths.MAIN} exact>
             My tickets
@@ -22,6 +25,7 @@ const Link = styled(NavLink)`
   font-size: 14px;
   color: #e4e4e4;
   text-decoration: none;
+  display: block;
   &:hover, &.active {
     color: #fff;
   }
@@ -41,7 +45,7 @@ const InnerWrap = styled.div`
 `;
 
 const Wrap = styled.div`
-  height: 45px;
+  height: 44px;
   width: 100%;
   display: flex;
   background-color: ${header};

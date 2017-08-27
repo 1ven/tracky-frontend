@@ -5,11 +5,11 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { background } from "core/colors";
 
-export default ({ children, projects }) =>
+export default ({ children, projects, isSidebarVisible, onMenuClick }) =>
   <Wrap>
-    <Header />
+    <Header onMenuClick={onMenuClick} isSidebarVisible={isSidebarVisible} />
     <ContentWrap>
-      <Sidebar projects={projects} />
+      {isSidebarVisible && <Sidebar projects={projects} />}
       <RightWrap>
         {children}
         <Footer />
