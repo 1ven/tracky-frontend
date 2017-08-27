@@ -1,2 +1,2 @@
 export const MAIN = "/";
-export const PROJECT = "/project/:id";
+export const PROJECT = "/projects/:id";
