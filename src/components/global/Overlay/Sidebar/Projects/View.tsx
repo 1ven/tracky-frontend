@@ -48,11 +48,14 @@ const Project = styled(NavLink)`
   margin-right: -1px;
   &:hover {
     background-color: #f5f5f5;
-    border-right: 1px solid ${border};
+    &:not(.active) {
+      border-right: 1px solid ${border};
+    }
   }
   &.active {
     background-color: ${primary};
     color: #fff;
+    cursor: default;
   }
 `;
 type ProjectProps = {
