@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
+import Scrollbar from "components/shared/kit/Scrollbar";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -10,9 +11,11 @@ export default ({ children, projects, isSidebarVisible, onMenuClick }) =>
     <ContentWrap>
       {isSidebarVisible && <Sidebar projects={projects} />}
       <RightWrap>
-        <ChildWrap>
-          {children}
-        </ChildWrap>
+        <Scrollbar>
+          <ChildWrap>
+            {children}
+          </ChildWrap>
+        </Scrollbar>
         <Footer />
       </RightWrap>
     </ContentWrap>
@@ -31,7 +34,6 @@ const Wrap = styled.div`
 `;
 
 const ChildWrap = styled.div`
-  overflow-y: auto;
   height: 100%;
   padding: 10px 14px;
   position: relative;
