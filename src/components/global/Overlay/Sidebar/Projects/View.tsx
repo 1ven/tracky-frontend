@@ -2,7 +2,7 @@ import * as React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { Project } from "tracky-types";
-import { primary } from "core/colors";
+import { border, primary } from "core/colors";
 import { paths } from "core/router";
 import { replaceParams } from "core/utils";
 import Icon from "components/shared/kit/Icon";
@@ -45,8 +45,10 @@ const Project = styled(NavLink)`
   display: block;
   text-decoration: none;
   color: #000;
+  margin-right: -1px;
   &:hover {
     background-color: #f5f5f5;
+    border-right: 1px solid ${border};
   }
   &.active {
     background-color: ${primary};
