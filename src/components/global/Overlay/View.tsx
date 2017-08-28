@@ -10,7 +10,9 @@ export default ({ children, projects, isSidebarVisible, onMenuClick }) =>
     <ContentWrap>
       {isSidebarVisible && <Sidebar projects={projects} />}
       <RightWrap>
-        {children}
+        <ChildWrap>
+          {children}
+        </ChildWrap>
         <Footer />
       </RightWrap>
     </ContentWrap>
@@ -26,6 +28,13 @@ const Wrap = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+`;
+
+const ChildWrap = styled.div`
+  overflow-y: auto;
+  height: 100%;
+  padding: 10px 14px;
+  position: relative;
 `;
 
 const RightWrap = styled.div`
