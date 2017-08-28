@@ -11,5 +11,5 @@ const Wrap = styled.div`
   position: absolute;
   bottom: 0;
   right: 0;
-  padding: 0 10px 10px;
+  padding: 0 14px 10px;
 `;

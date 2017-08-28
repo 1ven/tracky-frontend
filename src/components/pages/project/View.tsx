@@ -7,11 +7,22 @@ export default ({ items = [], isLoading }: Props) =>
       ? "Loading..."
       : !items.length
         ? "No items"
-        : items.map((item, i) =>
-            <div key={i}>
-              {item.title}
-            </div>
-          )}
+        : <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+              </tr>
+            </thead>
+            <tbody>
+              {items.map(({ title }, i) =>
+                <tr key={i}>
+                  <td>
+                    {title}
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>}
   </div>;
 
 export type Props = {

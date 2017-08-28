@@ -18,7 +18,7 @@ export default withProps(({ children, isLoading }: any) => ({
   line-height: 30px;
   display: inline-block;
   padding: 0 20px;
-  border-radius: 100px;
+  border-radius: 2px;
   border: 0;
   outline: 0;
   transition: background-color .2s;
