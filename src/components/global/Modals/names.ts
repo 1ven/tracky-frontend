@@ -1,2 +1,3 @@
 export const CREATE_TICKET = "CREATE_TICKET";
 export const CREATE_PROJECT = "CREATE_PROJECT";
+export const REMOVE_TICKET = "REMOVE_TICKET";

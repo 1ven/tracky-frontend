@@ -12,4 +12,5 @@ export default styled.div`
   align-items: center;
   justify-content: center;
   background-color: ${rgba("#000", 0.6)};
+  z-index: 2;
 `;

@@ -1,10 +1,11 @@
 export const SHOW_MODAL = "global/modals/showModal";
 export const HIDE_MODAL = "global/modals/hideModal";
 
-export const showModal = (name: string) => ({
+export const showModal = (name: string, data?) => ({
   type: SHOW_MODAL,
   payload: {
-    name
+    name,
+    data
   }
 });
 

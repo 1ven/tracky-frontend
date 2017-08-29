@@ -1,17 +1,24 @@
 import * as React from "react";
 import styled from "styled-components";
+import { prop, compose } from "ramda";
 import { withProps } from "recompose";
 import { darken } from "polished";
-import { primary } from "core/colors";
+import { primary, warn } from "core/colors";
 import Spinner from "components/shared/kit/Spinner";
 
-export default withProps(({ children, isLoading }: any) => ({
+const colors = {
+  blue: primary,
+  red: warn
+};
+
+export default withProps(({ children, isLoading, color }: any) => ({
   children: isLoading
     ? <Spinner size={14} color="light" thikness={1} />
-    : children
+    : children,
+  color: colors[color || "blue"]
 }))(styled.button`
   color: #fff;
-  background-color: ${primary};
+  background-color: ${prop("color")};
   cursor: pointer;
   font-size: 14px;
   height: 30px;
@@ -23,11 +30,13 @@ export default withProps(({ children, isLoading }: any) => ({
   outline: 0;
   transition: background-color .2s;
   &:hover {
-    background-color: ${darken(0.1, primary)};
+    background-color: ${compose(darken(0.1), prop("color"))};
   }
 `);
 
 export type Props = {
-  isLoading?: boolean;
   children: React.ReactNode;
+  onClick?: Function;
+  isLoading?: boolean;
+  color?: string;
 };

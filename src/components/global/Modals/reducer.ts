@@ -4,9 +4,9 @@ import { SHOW_MODAL, HIDE_MODAL } from "./actions";
 export default (state = [], action) => {
   switch (action.type) {
     case SHOW_MODAL:
-      return [...state, action.payload.name];
+      return [...state, action.payload];
     case HIDE_MODAL:
-      return state.filter(name => name !== action.payload.name);
+      return state.filter(m => m.name !== action.payload.name);
     default:
       return state;
   }

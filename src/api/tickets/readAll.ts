@@ -7,6 +7,8 @@ export default {
   url: "/v1/entities/tickets",
   method: "GET",
   reducer: (state, action) => {
+    if (!state.data) return state;
+
     switch (action.type) {
       case type(getCreate, "success"):
         return {

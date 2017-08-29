@@ -37,6 +37,9 @@ const ChildWrap = styled.div`
   height: 100%;
   padding: 10px 14px;
   position: relative;
+  > * {
+    padding-bottom: 50px;
+  }
 `;
 
 const RightWrap = styled.div`

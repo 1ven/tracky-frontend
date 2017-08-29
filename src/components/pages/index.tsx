@@ -4,7 +4,7 @@ import { combineEpics } from "redux-observable";
 import { Route, Switch } from "react-router-dom";
 import { paths } from "core/router";
 import Main, { epic as mainEpic } from "./main";
-import Project from "./project";
+import Project, { epic as projectEpic } from "./project";
 
 export const reducer = () => ({});
 
@@ -14,4 +14,4 @@ export default () =>
     <Route path={paths.PROJECT} exact component={Project as any} />
   </Switch>;
 
-export const epic = combineEpics(mainEpic);
+export const epic = combineEpics(mainEpic, projectEpic);

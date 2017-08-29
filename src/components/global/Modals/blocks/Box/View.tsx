@@ -22,7 +22,7 @@ const Close = styled(Icon).attrs({ name: "close" })`
 const Wrap = styled.div`
   background-color: #fff;
   border-radius: 3px;
-  padding: 20px;
+  padding: 14px;
   max-width: 560px;
   width: 100%;
 `;
@@ -35,5 +35,5 @@ const Title = styled.div`
 const Head = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 `;
