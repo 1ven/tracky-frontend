@@ -6,9 +6,11 @@ import Select from "components/shared/kit/Select";
 import Input from "components/shared/kit/Input";
 import Button from "components/shared/kit/Button";
 
+const name = modals.CREATE_PROJECT;
+
 export default ({ projects, handleSubmit, isSaving }) =>
-  <Back>
-    <Box title="Create project" name={modals.CREATE_PROJECT}>
+  <Back name={name}>
+    <Box title="Create project" name={name}>
       <Form onSubmit={handleSubmit}>
         <Input name="name" placeholder="Name" />
         <Button type="submit" isLoading={isSaving}>

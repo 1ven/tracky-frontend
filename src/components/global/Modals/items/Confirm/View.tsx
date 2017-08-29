@@ -45,7 +45,7 @@ export default ({
   name,
   confirmTitle = "Confirm"
 }: any) =>
-  <Back>
+  <Back name={name}>
     <Box title={title} name={name}>
       <Text>
         {text}

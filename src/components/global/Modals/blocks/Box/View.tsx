@@ -2,13 +2,13 @@ import * as React from "react";
 import styled from "styled-components";
 import Icon from "components/shared/kit/Icon";
 
-export default ({ onClose, title, children, name }: any) =>
-  <Wrap>
+export default ({ closeModal, title, children }: any) =>
+  <Wrap onClick={e => e.stopPropagation()}>
     <Head>
       <Title>
         {title}
       </Title>
-      <Close onClick={() => onClose(name)} />
+      <Close onClick={closeModal} />
     </Head>
     {children}
   </Wrap>;

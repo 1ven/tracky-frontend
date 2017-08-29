@@ -3,6 +3,7 @@ import * as modals from "./names";
 
 export { default as Box } from "./blocks/Box";
 export { default as Back } from "./blocks/Back";
+export { default as withCloseModal } from "./decorators/withCloseModal";
 export { default as Confirm } from "./items/Confirm";
 export { default as reducer } from "./reducer";
 export { default } from "./Provider";

@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import { rgba } from "polished";
 
-export default styled.div`
+const Wrap = styled.div`
   width: 100%;
   height: 100%;
   position: fixed;
@@ -14,3 +14,8 @@ export default styled.div`
   background-color: ${rgba("#000", 0.6)};
   z-index: 2;
 `;
+
+export default ({ closeModal, children }) =>
+  <Wrap onClick={closeModal}>
+    {children}
+  </Wrap>;
