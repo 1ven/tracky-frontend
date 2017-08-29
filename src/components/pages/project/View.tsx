@@ -1,38 +1,31 @@
 import * as React from "react";
 import styled from "styled-components";
 import Input from "components/shared/kit/Input";
-import Table from "components/shared/kit/Table";
-import More from "./More";
+import Loader from "components/shared/kit/Loader";
+import BaseTitle from "components/shared/kit/Title";
+import { Row, NoItems, More, Title } from "components/shared/common/Tickets";
 
 export default ({ items = [], isLoading }: Props) =>
-  <div>
-    {isLoading
-      ? "Loading..."
-      : !items.length
-        ? "No items"
-        : <Table
-            columns={[
-              {
-                property: "title",
-                header: {
-                  label: "Title"
+  isLoading
+    ? <Loader />
+    : !items.length
+      ? <NoItems />
+      : <div>
+          <BaseTitle>Tickets</BaseTitle>
+          <div>
+            {items.map((t, i) =>
+              <Row
+                key={i}
+                left={
+                  <Title id={t.id}>
+                    {t.title}
+                  </Title>
                 }
-              },
-              {
-                property: "id",
-                props: {
-                  style: {
-                    textAlign: "right"
-                  }
-                },
-                cell: {
-                  formatters: [id => <More id={id} />]
-                }
-              }
-            ]}
-            rows={items}
-          />}
-  </div>;
+                right={<More id={t.id} />}
+              />
+            )}
+          </div>
+        </div>;
 
 export type Props = {
   items: any[];

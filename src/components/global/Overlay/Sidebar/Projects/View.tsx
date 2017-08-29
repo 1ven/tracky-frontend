@@ -6,7 +6,7 @@ import { border, primary } from "core/colors";
 import { paths } from "core/router";
 import { replaceParams } from "core/utils";
 import Icon from "components/shared/kit/Icon";
-import Title from "../Title";
+import Title from "components/shared/kit/Title";
 
 export default ({ items, activeId, onAdd }: Props) =>
   <div>
@@ -45,7 +45,7 @@ const Project = styled(NavLink)`
   display: block;
   text-decoration: none;
   color: #000;
-  margin-right: -1px;
+  margin: 0 -15px 0 -14px;
   &:hover {
     background-color: #f5f5f5;
     &:not(.active) {

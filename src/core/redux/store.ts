@@ -15,6 +15,7 @@ import {
   reducer as globalReducer,
   epic as globalEpic
 } from "components/global";
+import { epic as sharedEpic } from "components/shared";
 import api, { reducer as apiReducer } from "api";
 
 declare var window: {
@@ -38,7 +39,7 @@ export default history =>
       applyMiddleware(
         routerMiddleware(history),
         apiMiddleware(api),
-        epicMiddleware(combineEpics(pagesEpic, globalEpic), {
+        epicMiddleware(combineEpics(globalEpic, pagesEpic, sharedEpic), {
           adapter: mostAdapter
         })
       )

@@ -14,5 +14,6 @@ export default ({ projects }) =>
 const Wrap = styled.div`
   height: 100%;
   width: 250px;
+  padding: 10px 14px;
   border-right: 1px solid ${border};
 `;

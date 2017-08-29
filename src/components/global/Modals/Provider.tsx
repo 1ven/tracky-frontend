@@ -3,22 +3,23 @@ import { connect } from "core/redux";
 import { getModals } from "./reducer";
 import * as names from "./names";
 
-import CreateTicket from "components/global/Overlay/Footer/Modal";
-import CreateProject from "components/global/Overlay/Sidebar/Projects/Modal";
-import RemoveTicket from "components/pages/project/More/RemoveModal";
+import * as Footer from "components/global/Overlay/Footer";
+import * as ProjectsSidebar from "components/global/Overlay/Sidebar/Projects";
+import * as TicketsEntry from "components/shared/common/Tickets";
 
-const map = {
-  [names.CREATE_TICKET]: CreateTicket,
-  [names.CREATE_PROJECT]: CreateProject,
-  [names.REMOVE_TICKET]: RemoveTicket
-};
+const getModal = (name: string) =>
+  ({
+    [names.CREATE_TICKET]: Footer.Modal,
+    [names.CREATE_PROJECT]: ProjectsSidebar.Modal,
+    [names.REMOVE_TICKET]: TicketsEntry.RemoveModal
+  }[name] as any);
 
 export default connect({
   items: getModals
 })(({ items }: any) =>
   <div>
     {items.map((modal, i) =>
-      React.createElement(map[modal.name] as any, {
+      React.createElement(getModal(modal.name), {
         key: i,
         data: modal.data
       })

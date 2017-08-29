@@ -1,4 +1,6 @@
-export default function(pattern, params) {
+import { curry } from "ramda";
+
+export default curry((pattern, params) => {
   return pattern.replace(/:[a-z|A-Z]+/g, match => {
     const matchedParam = match.substr(1);
     const value = params[matchedParam];
@@ -11,4 +13,4 @@ export default function(pattern, params) {
 
     return value;
   });
-}
+});
