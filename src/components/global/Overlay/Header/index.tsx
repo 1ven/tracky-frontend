@@ -2,10 +2,10 @@ import * as React from "react";
 import { nest } from "recompose";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import { header } from "core/colors";
 import { paths } from "core/router";
 import { Container } from "components/shared/kit/Grid";
 import MenuLink from "./MenuLink";
+import OverMenu from "./OverMenu";
 
 export default ({ onMenuClick, isSidebarVisible }) =>
   <Wrap>
@@ -13,12 +13,13 @@ export default ({ onMenuClick, isSidebarVisible }) =>
       <InnerWrap>
         <MenuLink onClick={onMenuClick} isActive={isSidebarVisible} />
         <Item>
-          <Link to={paths.MY} exact>
-            My
+          <Link to={paths.ME} exact>
+            Me
           </Link>
         </Item>
       </InnerWrap>
     </Container>
+    {isSidebarVisible && <OverMenu />}
   </Wrap>;
 
 const Link = styled(NavLink)`
@@ -47,6 +48,5 @@ const InnerWrap = styled.div`
 const Wrap = styled.div`
   height: 44px;
   width: 100%;
-  display: flex;
-  background-color: ${header};
+  background-color: #1b1b1b;
 `;

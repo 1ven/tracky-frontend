@@ -10,7 +10,7 @@ export const epic = combineEpics(ticketsEpic);
 
 export default nest(Wrap, () =>
   <Switch>
-    <Redirect exact from={paths.MY} to={paths.MY_TICKETS} />
-    <Route exact path={paths.MY_TICKETS} component={Tickets as any} />
+    <Redirect exact from={paths.ME} to={paths.ME_TICKETS} />
+    <Route exact path={paths.ME_TICKETS} component={Tickets as any} />
   </Switch>
 );

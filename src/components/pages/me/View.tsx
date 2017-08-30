@@ -8,7 +8,7 @@ export default ({ children }) =>
     sidebar={
       <SideItem>
         <Title>My page</Title>
-        <SideLink to={paths.MY_TICKETS}>Tickets</SideLink>
+        <SideLink to={paths.ME_TICKETS}>Tickets</SideLink>
       </SideItem>
     }
   >
