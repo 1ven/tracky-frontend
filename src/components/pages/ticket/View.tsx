@@ -9,7 +9,6 @@ const Title = styled.div`
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 8px;
-  margin-top: 10px;
 `;
 
 const Description = styled.div`font-size: 14px;`;
@@ -20,7 +19,6 @@ export default ({ title, description, isLoading }: Props) =>
   isLoading
     ? <Loader />
     : <div>
-        <BaseTitle>Back to "tracky-backend"</BaseTitle>
         <Title>
           {title}
         </Title>
