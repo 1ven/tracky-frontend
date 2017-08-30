@@ -11,6 +11,9 @@ export default compose<any, any>(
     isLoading: isLoading(getRead),
     ticket: select(getRead, "data")
   }),
-  withProps(prop("ticket")),
+  withProps(({ ticket, match }) => ({
+    ...ticket,
+    projectId: match.params.projectId
+  })),
   load(({ match }) => request(getRead, match))
 )(View);

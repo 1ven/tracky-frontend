@@ -45,7 +45,7 @@ const Circle = styled(Icon).attrs({ name: "add_circle_outline" })`
 const Project = styled(NavLink)`
   color: #fff;
   font-size: 14px;
-  padding: 8px 14px;
+  padding: 6px 14px;
   margin: 0 -14px;
   cursor: pointer;
   display: block;
