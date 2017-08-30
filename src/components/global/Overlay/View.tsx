@@ -1,7 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
 import Scrollbar from "components/shared/kit/Scrollbar";
-import Sidebar from "./Sidebar";
 import Header from "./Header";
 import Footer from "./Footer";
 

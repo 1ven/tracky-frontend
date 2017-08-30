@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { paths } from "core/router";
 import { replaceParams } from "core/utils";
 import { primary } from "core/colors";
+import Icon from "components/shared/kit/Icon";
 import Search from "./Search";
 
 const Wrap = styled.div`
@@ -23,6 +24,8 @@ const Title = styled.div`
   text-transform: uppercase;
   color: #fff;
   margin-bottom: 12px;
+  display: flex;
+  align-items: center;
 `;
 
 const Item = styled.div`
@@ -30,6 +33,13 @@ const Item = styled.div`
   &:last-child {
     margin-bottom: 0;
   }
+`;
+
+const Circle = styled(Icon).attrs({ name: "add_circle_outline" })`
+  margin-left: auto;
+  cursor: pointer;
+  font-size: 12px;
+  color: #fff;
 `;
 
 const Project = styled(NavLink)`
@@ -48,10 +58,12 @@ const Project = styled(NavLink)`
   }
 `;
 
-export default ({ projects, onProjectClick }) =>
+export default ({ projects, onProjectClick, onAddClick }) =>
   <Wrap>
     <Item>
-      <Title>Projects</Title>
+      <Title>
+        Projects<Circle onClick={onAddClick} />
+      </Title>
       <Search />
       <div>
         {projects.map((p, i) =>
