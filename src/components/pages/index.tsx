@@ -1,18 +1,18 @@
 import * as React from "react";
 import { combineReducers } from "redux";
 import { combineEpics } from "redux-observable";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { paths } from "core/router";
-
-import Main, { epic as mainEpic } from "./main";
+import My, { epic as myEpic } from "./my";
 import Project from "./project";
 
 export const reducer = () => ({});
 
+export const epic = combineEpics(myEpic);
+
 export default () =>
   <Switch>
-    <Route path={paths.MAIN} exact component={Main as any} />
+    <Redirect exact from={paths.MAIN} to={paths.MY} />
+    <Route path={paths.MY} component={My as any} />
     <Route path={paths.PROJECT} component={Project as any} />
   </Switch>;
-
-export const epic = combineEpics(mainEpic);

@@ -20,7 +20,6 @@ export const Link = styled(NavLink)`
   &.active {
     background-color: ${primary};
     color: #fff;
-    cursor: default;
   }
 `;
 

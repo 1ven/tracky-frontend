@@ -13,8 +13,8 @@ export default ({ onMenuClick, isSidebarVisible }) =>
       <InnerWrap>
         <MenuLink onClick={onMenuClick} isActive={isSidebarVisible} />
         <Item>
-          <Link to={paths.MAIN} exact>
-            My tickets
+          <Link to={paths.MY} exact>
+            My
           </Link>
         </Item>
       </InnerWrap>
