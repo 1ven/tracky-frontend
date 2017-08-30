@@ -5,9 +5,9 @@ import Sidebar from "./Sidebar";
 import Header from "./Header";
 import Footer from "./Footer";
 
-export default ({ children, projects, isSidebarVisible, onMenuClick }) =>
+export default ({ children, projects }) =>
   <Wrap>
-    <Header onMenuClick={onMenuClick} isSidebarVisible={isSidebarVisible} />
+    <Header projects={projects} />
     {children}
     <Footer />
   </Wrap>;

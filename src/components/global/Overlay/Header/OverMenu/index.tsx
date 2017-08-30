@@ -1,5 +1,8 @@
 import * as React from "react";
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
+import { paths } from "core/router";
+import { replaceParams } from "core/utils";
 import { primary } from "core/colors";
 import Search from "./Search";
 
@@ -29,12 +32,14 @@ const Item = styled.div`
   }
 `;
 
-const Project = styled.div`
+const Project = styled(NavLink)`
   color: #fff;
   font-size: 14px;
   padding: 8px 14px;
   margin: 0 -14px;
   cursor: pointer;
+  display: block;
+  text-decoration: none;
   &:hover {
     background-color: #1b1b1b;
   }
@@ -43,25 +48,19 @@ const Project = styled.div`
   }
 `;
 
-const projects = [
-  "tracky-frontend",
-  "tracky-api",
-  "dashboard",
-  "office-redesign",
-  "redux-api",
-  "chunks",
-  "frontend-boilerplate"
-];
-
-export default () =>
+export default ({ projects, onProjectClick }) =>
   <Wrap>
     <Item>
       <Title>Projects</Title>
       <Search />
       <div>
         {projects.map((p, i) =>
-          <Project key={i}>
-            {p}
+          <Project
+            key={i}
+            onClick={onProjectClick}
+            to={replaceParams(paths.PROJECT, { projectId: p.id })}
+          >
+            {p.name}
           </Project>
         )}
       </div>

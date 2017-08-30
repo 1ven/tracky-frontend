@@ -4,14 +4,19 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { paths } from "core/router";
 import { Container } from "components/shared/kit/Grid";
+import Toggle from "components/shared/kit/Toggle";
 import MenuLink from "./MenuLink";
 import OverMenu from "./OverMenu";
 
-export default ({ onMenuClick, isSidebarVisible }) =>
+export default ({ projects }) =>
   <Wrap>
     <Container>
       <InnerWrap>
-        <MenuLink onClick={onMenuClick} isActive={isSidebarVisible} />
+        <Toggle
+          link={isActive => <MenuLink isActive={isActive} />}
+          body={close =>
+            <OverMenu projects={projects} onProjectClick={close} />}
+        />
         <Item>
           <Link to={paths.ME} exact>
             Me
@@ -19,7 +24,6 @@ export default ({ onMenuClick, isSidebarVisible }) =>
         </Item>
       </InnerWrap>
     </Container>
-    {isSidebarVisible && <OverMenu />}
   </Wrap>;
 
 const Link = styled(NavLink)`

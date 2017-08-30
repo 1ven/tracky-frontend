@@ -22,8 +22,8 @@ export default compose(
     >
       {isFunc(link) ? link(isActive) : link}
     </div>
-    <div onClick={() => setActivity(false)}>
-      {isActive && body}
+    <div>
+      {isActive && (isFunc(body) ? body(() => setActivity(false)) : body)}
     </div>
   </div>
 ) as React.ComponentClass<Props>;
@@ -34,7 +34,7 @@ type InternalProps = {
 
 export type Props = {
   link: React.ReactNode | ((isActive: Props["isActive"]) => React.ReactNode);
-  body: React.ReactNode;
+  body: React.ReactNode | ((close: Function) => React.ReactNode);
   isActive?: boolean;
 };
 

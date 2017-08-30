@@ -2,9 +2,9 @@ import * as React from "react";
 import styled from "styled-components";
 import Icon from "components/shared/kit/Icon";
 
-export default ({ onClick, isActive }) =>
+export default ({ isActive }) =>
   <Wrap>
-    <Link onClick={onClick} className={isActive && "active"}>
+    <Link className={isActive && "active"}>
       <Line />
       <Line />
       <Line />
