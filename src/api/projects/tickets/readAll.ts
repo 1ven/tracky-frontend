@@ -1,7 +1,7 @@
 import { Ticket } from "tracky-types";
 
 export default {
-  url: "/v1/entities/projects/:id/tickets",
+  url: "/v1/entities/projects/:projectId/tickets",
   method: "GET"
 };
 

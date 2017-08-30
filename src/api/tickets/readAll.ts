@@ -19,7 +19,7 @@ export default {
         return {
           ...state,
           data: state.data.filter(
-            ({ id }) => id !== action.payload.request.params.id
+            ({ id }) => id !== action.payload.request.params.ticketId
           )
         };
       default:

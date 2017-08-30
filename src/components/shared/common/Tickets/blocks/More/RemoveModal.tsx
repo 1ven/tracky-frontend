@@ -21,7 +21,7 @@ export default compose(
         dispatch(
           request(getRemove, {
             params: {
-              id: data.id
+              ticketId: data.id
             }
           })
         );

@@ -16,7 +16,7 @@ export default compose(
       onSubmit: ({ project: id, title, description }) =>
         request(getCreate, {
           params: {
-            id
+            projectId: id
           },
           body: {
             title,

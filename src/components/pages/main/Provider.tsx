@@ -13,9 +13,9 @@ export default compose<Props, {}>(
       items: select(getReadAll, "data")
     },
     {
-      onRemove: (id: number) =>
+      onRemove: (ticketId: number) =>
         request(getRemove, {
-          params: { id }
+          params: { ticketId }
         })
     }
   ),

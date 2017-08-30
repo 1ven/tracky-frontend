@@ -1,5 +1,5 @@
 import * as React from "react";
-import { compose } from "recompose";
+import { compose, withProps } from "recompose";
 import { load } from "core/decorators";
 import { isLoading, request, select } from "core/api";
 import { connect } from "core/redux";
@@ -11,5 +11,8 @@ export default compose<any, any>(
     isLoading: isLoading(getReadAll),
     items: select(getReadAll, "data")
   }),
-  load(({ match }) => request(getReadAll, match))
+  load(({ match }) => request(getReadAll, match)),
+  withProps(({ match }) => ({
+    projectId: match.params.projectId
+  }))
 )(View);
