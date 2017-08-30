@@ -7,14 +7,16 @@ import { renderChildren } from "core/utils";
 
 export const Label = styled.label``;
 
-export default ({ children, onSubmit }: any) =>
-  <form onSubmit={onSubmit}>
-    {renderChildren(Item, children)}
-  </form>;
-
 const Item = styled.div`
   margin-bottom: 15px;
   &:last-child {
     margin-bottom: 0;
   }
 `;
+
+export { default as SubmitBar } from "./SubmitBar";
+
+export default ({ children, onSubmit }: any) =>
+  <form onSubmit={onSubmit}>
+    {renderChildren(Item, children)}
+  </form>;

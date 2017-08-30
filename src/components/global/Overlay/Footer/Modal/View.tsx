@@ -1,10 +1,10 @@
 import * as React from "react";
 import { Project } from "tracky-types";
-import Form from "components/shared/kit/Form";
 import Select from "components/shared/kit/Select";
 import Input from "components/shared/kit/Input";
 import Textarea from "components/shared/kit/Textarea";
 import Button from "components/shared/kit/Button";
+import Form, { SubmitBar } from "components/shared/kit/Form";
 import { Box, Back, modals } from "components/global/Modals";
 
 const name = modals.CREATE_TICKET;
@@ -23,9 +23,11 @@ export default ({ projects, handleSubmit, isSaving }) =>
           )}
         </Select>
         <Textarea name="description" placeholder="Description" rows="8" />
-        <Button type="submit" isLoading={isSaving}>
-          Submit
-        </Button>
+        <SubmitBar isLoading={isSaving}>
+          <Button type="submit" inactive={isSaving}>
+            Submit
+          </Button>
+        </SubmitBar>
       </Form>
     </Box>
   </Back>;

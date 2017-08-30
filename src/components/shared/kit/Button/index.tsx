@@ -11,12 +11,19 @@ const colors = {
   red: warn
 };
 
-export default withProps(({ children, isLoading, color }: any) => ({
-  children: isLoading
-    ? <Spinner size={14} color="light" thikness={1} />
-    : children,
-  color: colors[color || "blue"]
-}))(styled.button`
+const addProps = withProps(
+  ({ children, isLoading, color, onClick, inactive }: any) => ({
+    onClick: e => (inactive ? e.preventDefault() : onClick && onClick(e)),
+
+    children: isLoading
+      ? <Spinner size={14} color="light" thikness={1} />
+      : children,
+
+    color: colors[color || "blue"]
+  })
+);
+
+export default addProps(styled.button`
   color: #fff;
   background-color: ${prop("color")};
   cursor: pointer;
@@ -29,13 +36,22 @@ export default withProps(({ children, isLoading, color }: any) => ({
   border: 0;
   outline: 0;
   transition: background-color .2s;
-  &:hover {
-    background-color: ${compose(darken(0.1), prop("color"))};
-  }
+  ${({ inactive, color }: any) =>
+    inactive
+      ? `
+    background-color: #ddd;
+    cursor: not-allowed;
+  `
+      : `
+    &:hover {
+      background-color: ${darken(0.1, color)};
+    }
+  `};
 `);
 
 export type Props = {
   children: React.ReactNode;
+  inactive?: boolean;
   onClick?: Function;
   isLoading?: boolean;
   color?: string;
