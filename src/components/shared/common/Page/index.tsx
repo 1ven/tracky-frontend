@@ -2,10 +2,17 @@ import * as React from "react";
 import styled from "styled-components";
 import Scrollbar from "components/shared/kit/Scrollbar";
 import { border } from "core/colors";
+import Pane from "./Pane";
 
 const offset = "10px 14px";
 
 const Wrap = styled.div`
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+`;
+
+const BodyWrap = styled.div`
   display: flex;
   height: 100%;
 `;
@@ -33,14 +40,19 @@ const StyledScrollbar = styled(Scrollbar)`
 
 export { Link as SideLink, Item as SideItem } from "./Sidebar";
 
-export default ({ sidebar, children }) =>
+export default ({ sidebar, children, title }) =>
   <Wrap>
-    <Sidebar>
-      {sidebar}
-    </Sidebar>
-    <StyledScrollbar>
-      <ChildWrap>
-        {children}
-      </ChildWrap>
-    </StyledScrollbar>
+    <Pane>
+      {title}
+    </Pane>
+    <BodyWrap>
+      <Sidebar>
+        {sidebar}
+      </Sidebar>
+      <StyledScrollbar>
+        <ChildWrap>
+          {children}
+        </ChildWrap>
+      </StyledScrollbar>
+    </BodyWrap>
   </Wrap>;

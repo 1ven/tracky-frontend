@@ -10,7 +10,7 @@ import { Row, NoItems, More, Title } from "components/shared/common/Tickets";
 
 const ticketLink = replaceParams(paths.PROJECT_TICKETS_TICKET);
 
-export default ({ name, items = [], isLoading, projectId }: Props) =>
+export default ({ items = [], isLoading, projectId }: Props) =>
   isLoading
     ? <Loader />
     : !items.length
@@ -38,7 +38,6 @@ export default ({ name, items = [], isLoading, projectId }: Props) =>
         </div>;
 
 export type Props = {
-  name: Project["name"];
   projectId: Project["id"];
   items: any[];
   isLoading: boolean;

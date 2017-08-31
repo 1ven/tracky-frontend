@@ -5,6 +5,7 @@ import Headline from "components/shared/kit/Headline";
 
 export default ({ children }) =>
   <Page
+    title="Me"
     sidebar={
       <SideItem>
         <Headline>Menu</Headline>
