@@ -4,12 +4,14 @@ import { load } from "core/decorators";
 import { isLoading, request, select } from "core/api";
 import { connect } from "core/redux";
 import { getEntry as getReadAll } from "api/projects/tickets/readAll";
+import { getProjectName } from "../selectors";
 import View, { Props } from "./View";
 
 export default compose<any, any>(
   connect({
     isLoading: isLoading(getReadAll),
-    items: select(getReadAll, "data")
+    items: select(getReadAll, "data"),
+    name: getProjectName
   }),
   load(({ match }) => request(getReadAll, match)),
   withProps(({ match }) => ({

@@ -1,3 +1,5 @@
+import "core/global";
+
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { nest } from "recompose";

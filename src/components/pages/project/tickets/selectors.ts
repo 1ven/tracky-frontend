@@ -7,5 +7,5 @@ const getProjectId = (state, props) => props.match.params.projectId;
 
 export const getProjectName = createSelector(
   [getProjectId, select(getEntry, "data")],
-  (id, items) => items.filter(item => item.id == id).map(prop("name"))
+  (id, items) => items.filter(item => item.id == id).map(prop("name"))[0]
 );

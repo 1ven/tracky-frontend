@@ -3,7 +3,7 @@ import { nest } from "recompose";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { replaceParams } from "core/utils";
 import { paths } from "core/router";
-import Wrap from "./Provider";
+import Wrap from "./View";
 import Tickets from "./tickets";
 
 const ticketsLink = replaceParams(paths.PROJECT_TICKETS);

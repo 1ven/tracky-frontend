@@ -1,21 +1,22 @@
 import * as React from "react";
 import styled from "styled-components";
+import { Project } from "tracky-types";
 import { replaceParams } from "core/utils";
 import { paths } from "core/router";
 import Input from "components/shared/kit/Input";
 import Loader from "components/shared/kit/Loader";
-import BaseTitle from "components/shared/kit/Title";
+import Headline from "components/shared/kit/Headline";
 import { Row, NoItems, More, Title } from "components/shared/common/Tickets";
 
 const ticketLink = replaceParams(paths.PROJECT_TICKETS_TICKET);
 
-export default ({ items = [], isLoading, projectId }: Props) =>
+export default ({ name, items = [], isLoading, projectId }: Props) =>
   isLoading
     ? <Loader />
     : !items.length
       ? <NoItems />
       : <div>
-          <BaseTitle>Tickets</BaseTitle>
+          <Headline>Tickets</Headline>
           <div>
             {items.map((t, i) =>
               <Row
@@ -37,7 +38,8 @@ export default ({ items = [], isLoading, projectId }: Props) =>
         </div>;
 
 export type Props = {
+  name: Project["name"];
+  projectId: Project["id"];
   items: any[];
-  projectId: number;
   isLoading: boolean;
 };

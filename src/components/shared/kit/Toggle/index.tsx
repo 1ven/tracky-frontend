@@ -1,7 +1,10 @@
 import * as React from "react";
+import styled from "styled-components";
 import * as enhanceWithClickOutside from "react-click-outside";
 import { compose, lifecycle, withState } from "recompose";
 import { is } from "ramda";
+
+const Link = styled.div`display: flex;`;
 
 export default compose(
   withState("isActive", "setActivity", ({ isActive }) => isActive || false),
@@ -15,13 +18,13 @@ export default compose(
   })
 )(({ link, body, isActive, setActivity }: Props & InternalProps) =>
   <div>
-    <div
+    <Link
       onClick={() => {
         setActivity(!isActive);
       }}
     >
       {isFunc(link) ? link(isActive) : link}
-    </div>
+    </Link>
     <div>
       {isActive && (isFunc(body) ? body(() => setActivity(false)) : body)}
     </div>
