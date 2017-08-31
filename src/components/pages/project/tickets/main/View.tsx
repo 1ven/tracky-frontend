@@ -6,7 +6,12 @@ import { paths } from "core/router";
 import Input from "components/shared/kit/Input";
 import Loader from "components/shared/kit/Loader";
 import Headline from "components/shared/kit/Headline";
-import { Row, NoItems, More, Title } from "components/shared/common/Tickets";
+import {
+  Row,
+  NoItems,
+  More,
+  Title
+} from "components/shared/common/tickets/List";
 
 const ticketLink = replaceParams(paths.PROJECT_TICKETS_TICKET);
 
