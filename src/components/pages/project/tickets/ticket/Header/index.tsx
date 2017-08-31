@@ -23,7 +23,7 @@ const BackToProject = styled(nest(NavLink, Title))`
 
 export default ({ projectId }) =>
   <Wrap>
-    <BackToProject to={replaceParams(paths.PROJECT, { projectId })}>
+    <BackToProject to={replaceParams(paths.PROJECT_TICKETS, { projectId })}>
       Back to project
     </BackToProject>
     <More />
