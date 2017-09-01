@@ -5,7 +5,7 @@ import { replaceParams } from "core/utils";
 import Page, { LeftLink, LeftItem } from "components/shared/kit/Page";
 import Headline from "components/shared/kit/Headline";
 
-export default ({ match, children, projectName }) =>
+export default ({ match, children, projectName, rightBar }: Props) =>
   <Page
     title={projectName}
     leftBar={
@@ -16,6 +16,14 @@ export default ({ match, children, projectName }) =>
         </LeftLink>
       </LeftItem>
     }
+    rightBar={rightBar}
   >
     {children}
   </Page>;
+
+export type Props = {
+  match: any;
+  children: React.ReactNode;
+  projectName: string;
+  rightBar?: React.ReactNode;
+};

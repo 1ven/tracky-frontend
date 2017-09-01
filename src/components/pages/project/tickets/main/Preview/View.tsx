@@ -2,6 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import { nest } from "recompose";
 import { NavLink } from "react-router-dom";
+import { Ticket } from "tracky-types";
 import { replaceParams } from "core/utils";
 import { border } from "core/colors";
 import { paths } from "core/router";
@@ -10,16 +11,7 @@ import Title from "components/shared/kit/Title";
 import Icon from "components/shared/kit/Icon";
 import Item from "components/shared/common/tickets/Item";
 
-const Wrap = styled.div`
-  padding-left: 14px;
-  margin-left: 14px;
-  margin-top: -10px;
-  margin-bottom: -10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-left: 1px solid ${border};
-  width: 400px;
-`;
+const Wrap = styled.div`width: 350px;`;
 
 const Head = styled(Line)`
   display: flex;
@@ -43,11 +35,16 @@ const Open = styled(nest(NavLink, Title))`
   }
 ` as any;
 
-export default ({ ticket, onCloseClick }) =>
+export default ({ ticket, close }) =>
   <Wrap>
     <Head>
       <Open to={"/"}>Open full</Open>
-      <Close onClick={onCloseClick} />
+      <Close onClick={close} />
     </Head>
     <Item title={ticket.title} description={ticket.description} />
   </Wrap>;
+
+export type Props = {
+  ticket: Ticket;
+  close: Function;
+};

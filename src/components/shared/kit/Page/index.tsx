@@ -26,7 +26,6 @@ const Leftbar = styled.div`
 `;
 
 const Rightbar = styled.div`
-  width: 400px;
   height: 100%;
   display: flex;
   border-left: 1px solid ${border};
