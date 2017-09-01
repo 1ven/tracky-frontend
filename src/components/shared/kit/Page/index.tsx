@@ -17,11 +17,19 @@ const BodyWrap = styled.div`
   height: 100%;
 `;
 
-const Sidebar = styled.div`
+const Leftbar = styled.div`
   width: 250px;
   height: 100%;
   display: flex;
   border-right: 1px solid ${border};
+  padding: ${offset};
+`;
+
+const Rightbar = styled.div`
+  width: 400px;
+  height: 100%;
+  display: flex;
+  border-left: 1px solid ${border};
   padding: ${offset};
 `;
 
@@ -38,21 +46,33 @@ const StyledScrollbar = styled(Scrollbar)`
   flex: 1;
 `;
 
-export { Link as SideLink, Item as SideItem } from "./Sidebar";
+export { Link as LeftLink, Item as LeftItem } from "./Leftbar";
 
-export default ({ sidebar, children, title }) =>
+export default ({ leftBar, rightBar, children, title }: Props) =>
   <Wrap>
     <Pane>
       {title}
     </Pane>
     <BodyWrap>
-      <Sidebar>
-        {sidebar}
-      </Sidebar>
+      {leftBar &&
+        <Leftbar>
+          {leftBar}
+        </Leftbar>}
       <StyledScrollbar>
         <ChildWrap>
           {children}
         </ChildWrap>
       </StyledScrollbar>
+      {rightBar &&
+        <Rightbar>
+          {rightBar}
+        </Rightbar>}
     </BodyWrap>
   </Wrap>;
+
+export type Props = {
+  title: string;
+  children: React.ReactNode;
+  leftBar?: React.ReactNode;
+  rightBar?: React.ReactNode;
+};

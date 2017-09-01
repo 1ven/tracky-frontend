@@ -1,42 +1,28 @@
 import * as React from "react";
 import styled from "styled-components";
-import { Project } from "tracky-types";
-import { replaceParams } from "core/utils";
-import { paths } from "core/router";
+import { Ticket, Project } from "tracky-types";
 import Input from "components/shared/kit/Input";
 import Loader from "components/shared/kit/Loader";
 import Headline from "components/shared/kit/Headline";
-import {
-  Row,
-  NoItems,
-  More,
-  Title
-} from "components/shared/common/tickets/List";
+import * as List from "components/shared/common/tickets/List";
 
-const ticketLink = replaceParams(paths.PROJECT_TICKETS_TICKET);
-
-export default ({ items = [], isLoading, projectId }: Props) =>
+export default ({ items = [], isLoading, projectId, onTicketClick }: Props) =>
   isLoading
     ? <Loader />
     : !items.length
-      ? <NoItems />
+      ? <List.NoItems />
       : <div>
           <Headline>Tickets</Headline>
           <div>
             {items.map((t, i) =>
-              <Row
+              <List.Row
                 key={i}
                 left={
-                  <Title
-                    to={ticketLink({
-                      ticketId: t.id,
-                      projectId
-                    })}
-                  >
+                  <List.Title onClick={() => onTicketClick(t.id)}>
                     {t.title}
-                  </Title>
+                  </List.Title>
                 }
-                right={<More id={t.id} />}
+                right={<List.More id={t.id} />}
               />
             )}
           </div>
@@ -44,6 +30,7 @@ export default ({ items = [], isLoading, projectId }: Props) =>
 
 export type Props = {
   projectId: Project["id"];
-  items: any[];
+  items: Ticket[];
   isLoading: boolean;
+  onTicketClick: (id: Ticket["id"]) => void;
 };
