@@ -35,16 +35,17 @@ const Open = styled(nest(NavLink, Title))`
   }
 ` as any;
 
-export default ({ ticket, close }) =>
+export default ({ ticket, close, link }: Props) =>
   <Wrap>
     <Head>
-      <Open to={"/"}>Open full</Open>
+      <Open to={link}>Open full</Open>
       <Close onClick={close} />
     </Head>
     <Item title={ticket.title} description={ticket.description} />
   </Wrap>;
 
 export type Props = {
+  link: string;
   ticket: Ticket;
-  close: Function;
+  close: () => void;
 };

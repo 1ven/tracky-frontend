@@ -1,15 +1,27 @@
-import { compose, lifecycle } from "recompose";
-import View, { Props } from "./View";
+import { compose, lifecycle, withProps } from "recompose";
+import { withRouter } from "react-router-dom";
+import { paths } from "core/router";
+import { replaceParams } from "core/utils";
+import View, { Props as ViewProps } from "./View";
 
 import * as enhanceWithClickOutside from "react-click-outside";
 
-export default compose<Props, Props>(
+export default compose<ViewProps, Props>(
   enhanceWithClickOutside,
-  lifecycle<Props, {}>({
+  lifecycle<ViewProps, {}>({
     componentDidMount() {
       (this as any).handleClickOutside = () => {
-        this.props.close(void 0);
+        this.props.close();
       };
     }
-  })
+  }),
+  withRouter,
+  withProps(({ match, ticket }) => ({
+    link: replaceParams(paths.PROJECT_TICKETS_TICKET, {
+      ...match.params,
+      ticketId: ticket.id
+    })
+  }))
 )(View);
+
+export type Props = Pick<ViewProps, "ticket" | "close">;

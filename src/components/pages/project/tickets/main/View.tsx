@@ -47,7 +47,7 @@ export type Props = {
   projectId: Project["id"];
   items: Ticket[];
   isLoading: boolean;
-  closeTicket: Function;
+  closeTicket: () => void;
   showTicket: (t: Ticket) => void;
   activeTicket?: Ticket;
 };
