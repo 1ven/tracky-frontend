@@ -1,3 +1,4 @@
+import { applySpec, path } from "ramda";
 import { compose, withProps } from "recompose";
 import { withForm, forms } from "core/form";
 import { connect } from "core/redux";
@@ -13,7 +14,15 @@ export default compose(
   }),
   connect(
     {
-      isSaving: select(getUpdate, "isFetching")
+      isSaving: select(
+        getUpdate,
+        "isFetching",
+        applySpec({
+          params: {
+            ticketId: path(["data", "id"])
+          }
+        })
+      )
     },
     (dispatch, { data }) => ({
       onSubmit: ({ project, title, description }) =>

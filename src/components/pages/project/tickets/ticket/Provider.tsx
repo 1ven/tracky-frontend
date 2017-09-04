@@ -1,4 +1,4 @@
-import { prop } from "ramda";
+import { prop, applySpec, path } from "ramda";
 import { compose, withProps } from "recompose";
 import { connect } from "core/redux";
 import { load } from "core/decorators";
@@ -9,7 +9,13 @@ import View from "./View";
 export default compose<any, any>(
   connect({
     isLoading: isLoading(getRead),
-    ticket: select(getRead, "data")
+    ticket: select(
+      getRead,
+      "data",
+      applySpec({
+        params: path(["match", "params"])
+      })
+    )
   }),
   withProps(({ ticket, match }) => ({
     ...ticket,

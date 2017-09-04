@@ -1,4 +1,4 @@
-import { prop } from "ramda";
+import { prop, isNil } from "ramda";
 import { createStructuredSelector } from "reselect";
 import { compose, branch, renderComponent } from "recompose";
 import { load } from "core/decorators";
@@ -10,7 +10,7 @@ import View from "./View";
 export default compose(
   connect({
     isLoading: isLoading(getReadAll),
-    projects: select(getReadAll, "data")
+    projects: select(getReadAll, "data", () => isNil)
   }),
   load(() => request(getReadAll))
 )(View);

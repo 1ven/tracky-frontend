@@ -1,3 +1,5 @@
+import { isNil } from "ramda";
+import { updateState } from "redux-api-helpers";
 import { Project } from "tracky-types";
 import { type } from "core/api";
 import { getEntry as getCreate } from "./create";
@@ -8,10 +10,14 @@ export default {
   reducer: (state, action) => {
     switch (action.type) {
       case type(getCreate, "success"):
-        return {
-          ...state,
-          data: [...state.data, action.payload.body]
-        };
+        return updateState(
+          item => ({
+            ...item,
+            data: [...item.data, action.payload.body]
+          }),
+          isNil,
+          state
+        );
       default:
         return state;
     }

@@ -1,3 +1,4 @@
+import { isNil } from "ramda";
 import { compose } from "recompose";
 import { connect } from "core/redux";
 import { select, request } from "core/api";
@@ -6,7 +7,7 @@ import View, { Props as ViewProps } from "./View";
 
 export default compose<ViewProps, Props>(
   connect({
-    projects: select(getReadAll, "data")
+    projects: select(getReadAll, "data", () => isNil)
   })
 )(View);
 

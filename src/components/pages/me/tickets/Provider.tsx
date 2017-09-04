@@ -1,4 +1,5 @@
 import { compose } from "recompose";
+import { isNil } from "ramda";
 import { load } from "core/decorators";
 import { isLoading, request, select } from "core/api";
 import { connect } from "core/redux";
@@ -10,7 +11,7 @@ export default compose<Props, {}>(
   connect(
     {
       isLoading: isLoading(getReadAll),
-      items: select(getReadAll, "data")
+      items: select(getReadAll, "data", () => isNil)
     },
     {
       onRemove: (ticketId: number) =>

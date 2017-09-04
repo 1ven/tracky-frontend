@@ -1,4 +1,5 @@
 import * as React from "react";
+import { applySpec, path } from "ramda";
 import { connect } from "core/redux";
 import { compose, withProps } from "recompose";
 import { Confirm, modals } from "components/global/Modals";
@@ -14,7 +15,15 @@ export default compose(
   }),
   connect(
     {
-      isConfirming: select(getRemove, "isFetching")
+      isConfirming: select(
+        getRemove,
+        "isFetching",
+        applySpec({
+          params: {
+            ticketId: path(["data", "id"])
+          }
+        })
+      )
     },
     (dispatch, { data }) => ({
       onConfirm() {
