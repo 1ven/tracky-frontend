@@ -2,7 +2,7 @@ import { Ticket } from "tracky-types";
 
 export default {
   url: "/v1/entities/tickets/:ticketId",
-  method: "POST"
+  method: "PATCH"
 };
 
 export type Response = Ticket;

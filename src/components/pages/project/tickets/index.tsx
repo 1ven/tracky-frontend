@@ -2,7 +2,7 @@ import * as React from "react";
 import { Route, Switch } from "react-router-dom";
 import { paths } from "core/router";
 import Main from "./main";
-import Ticket from "./ticket";
+import Ticket, { epic } from "./ticket";
 
 export default () =>
   <Switch>
@@ -13,3 +13,5 @@ export default () =>
       component={Ticket as any}
     />
   </Switch>;
+
+export { epic };

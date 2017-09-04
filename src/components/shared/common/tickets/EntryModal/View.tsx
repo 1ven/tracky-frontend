@@ -7,11 +7,9 @@ import Button from "components/shared/kit/Button";
 import Form, { SubmitBar } from "components/shared/kit/Form";
 import { Box, Back, modals } from "components/global/Modals";
 
-const name = modals.CREATE_TICKET;
-
-export default ({ projects, handleSubmit, isSaving }) =>
+export default ({ projects, handleSubmit, isSaving, name, title }: Props) =>
   <Back name={name}>
-    <Box title="Create a ticket" name={name}>
+    <Box title={title} name={name}>
       <Form onSubmit={handleSubmit}>
         <Input name="title" placeholder="Title" />
         <Select name="project">
@@ -31,3 +29,11 @@ export default ({ projects, handleSubmit, isSaving }) =>
       </Form>
     </Box>
   </Back>;
+
+export type Props = {
+  projects: Project[];
+  handleSubmit: Function;
+  isSaving: boolean;
+  title: string;
+  name: string;
+};

@@ -23,7 +23,14 @@ const Wrap = styled.div`
   position: relative;
 `;
 
-export default () =>
+export default ({ onEditClick }) =>
   <Wrap>
-    <Toggle link={<Cog />} body={<Dropdown items={["Edit", "Remove"]} />} />
+    <Toggle
+      link={<Cog />}
+      body={
+        <Dropdown
+          items={[<div onClick={onEditClick}>Edit</div>, <div>Remove</div>]}
+        />
+      }
+    />
   </Wrap>;

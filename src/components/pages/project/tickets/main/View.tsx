@@ -31,6 +31,7 @@ export default ({
               {items.map((t, i) =>
                 <List.Row
                   key={i}
+                  isActive={activeTicket && t.id === activeTicket.id}
                   left={
                     <List.Title onClick={() => showTicket(t)}>
                       {t.title}

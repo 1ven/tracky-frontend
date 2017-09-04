@@ -1,15 +1,18 @@
-import { compose } from "recompose";
+import { compose, withProps } from "recompose";
 import { withForm, forms } from "core/form";
 import { connect } from "core/redux";
 import { select, request } from "core/api";
-import { getEntry as getReadAll } from "api/projects/readAll";
 import { getEntry as getCreate } from "api/projects/tickets/create";
-import View from "./View";
+import { modals } from "components/global/Modals";
+import EntryModal from "components/shared/common/tickets/EntryModal";
 
 export default compose(
+  withProps({
+    name: modals.CREATE_TICKET,
+    title: "Create a ticket"
+  }),
   connect(
     {
-      projects: select(getReadAll, "data"),
       isSaving: select(getCreate, "isFetching")
     },
     {
@@ -26,4 +29,4 @@ export default compose(
     }
   ),
   withForm({ form: forms.CREATE_TICKET })
-)(View as any);
+)(EntryModal);
