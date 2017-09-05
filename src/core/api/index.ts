@@ -9,6 +9,7 @@ export const success = transform(helpers.success);
 export const failure = transform(helpers.failure);
 
 export const select = transform(helpers.select);
+export const historySelect = transform(helpers.historySelect);
 export const type = transform(helpers.type);
 // export const reducer = transform(helpers.reducer);
 
