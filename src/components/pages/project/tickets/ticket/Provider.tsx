@@ -7,17 +7,15 @@ import { denormalized, schemas } from "core/normalizr";
 import { getEntry as getRead } from "api/tickets/read";
 import View from "./View";
 
+const ticketCondition = applySpec({
+  params: path(["match", "params"])
+});
+
 export default compose<any, any>(
   connect({
-    isLoading: isLoading(getRead),
+    isLoading: isLoading(getRead, ticketCondition),
     ticket: denormalized(
-      select(
-        getRead,
-        "data",
-        applySpec({
-          params: path(["match", "params"])
-        })
-      ),
+      select(getRead, "data", ticketCondition),
       schemas.ticket
     )
   }),

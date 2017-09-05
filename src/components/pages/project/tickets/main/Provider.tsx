@@ -9,21 +9,18 @@ import { denormalized, schemas } from "core/normalizr";
 import { getEntry as getReadAll } from "api/projects/tickets/readAll";
 import View, { Props } from "./View";
 
+const ticketsCondition = applySpec({
+  params: {
+    projectId: path(["match", "params", "projectId"])
+  }
+});
+
 export default compose<any, any>(
   connect({
-    isLoading: isLoading(getReadAll),
-    items: denormalized(
-      select(
-        getReadAll,
-        "data",
-        applySpec({
-          params: {
-            projectId: path(["match", "params", "projectId"])
-          }
-        })
-      ),
-      [schemas.ticket]
-    )
+    isLoading: isLoading(getReadAll, ticketsCondition),
+    items: denormalized(select(getReadAll, "data", ticketsCondition), [
+      schemas.ticket
+    ])
   }),
   load(({ match }) => request(getReadAll, match)),
   withProps(({ match }) => ({

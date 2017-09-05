@@ -8,11 +8,13 @@ import { getEntry as getReadAll } from "api/tickets/readAll";
 import { getEntry as getRemove } from "api/tickets/remove";
 import Page, { Props } from "./View";
 
+const ticketsCondition = () => isNil;
+
 export default compose<Props, {}>(
   connect(
     {
-      isLoading: isLoading(getReadAll),
-      items: denormalized(select(getReadAll, "data", () => isNil), [
+      isLoading: isLoading(getReadAll, ticketsCondition),
+      items: denormalized(select(getReadAll, "data", ticketsCondition), [
         schemas.ticket
       ])
     },

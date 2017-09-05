@@ -12,8 +12,11 @@ export const select = transform(helpers.select);
 export const type = transform(helpers.type);
 // export const reducer = transform(helpers.reducer);
 
-export const isLoading = getApiEntry =>
+export const isLoading = (getApiEntry, condition) =>
   createSelector(
-    [select(getApiEntry, "isFetching"), select(getApiEntry, "lastUpdated")],
+    [
+      select(getApiEntry, "isFetching", condition),
+      select(getApiEntry, "lastUpdated", condition)
+    ],
     (isFetching, lastUpdated) => (!lastUpdated ? true : isFetching)
   );

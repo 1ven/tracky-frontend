@@ -8,10 +8,12 @@ import { denormalized, schemas } from "core/normalizr";
 import { getEntry as getReadAll } from "api/projects/readAll";
 import View from "./View";
 
+const projectsCondition = () => isNil;
+
 export default compose(
   connect({
-    isLoading: isLoading(getReadAll),
-    projects: denormalized(select(getReadAll, "data", () => isNil), [
+    isLoading: isLoading(getReadAll, projectsCondition),
+    projects: denormalized(select(getReadAll, "data", projectsCondition), [
       schemas.project
     ])
   }),
