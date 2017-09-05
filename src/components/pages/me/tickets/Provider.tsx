@@ -1,7 +1,7 @@
 import { compose } from "recompose";
 import { isNil } from "ramda";
 import { load } from "core/decorators";
-import { isLoading, request, select } from "core/api";
+import { isLoading, request, historySelect } from "core/api";
 import { connect } from "core/redux";
 import { denormalized, schemas } from "core/normalizr";
 import { getEntry as getReadAll } from "api/tickets/readAll";
@@ -14,7 +14,7 @@ export default compose<Props, {}>(
   connect(
     {
       isLoading: isLoading(getReadAll, ticketsCondition),
-      items: denormalized(select(getReadAll, "data", ticketsCondition), [
+      items: denormalized(historySelect(getReadAll, "data", ticketsCondition), [
         schemas.ticket
       ])
     },

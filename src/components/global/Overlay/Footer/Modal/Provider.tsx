@@ -1,7 +1,7 @@
 import { compose, withProps } from "recompose";
 import { withForm, forms } from "core/form";
 import { connect } from "core/redux";
-import { select, request } from "core/api";
+import { historySelect, request } from "core/api";
 import { getEntry as getCreate } from "api/projects/tickets/create";
 import { modals } from "components/global/Modals";
 import EntryModal from "components/shared/common/tickets/EntryModal";
@@ -13,7 +13,7 @@ export default compose(
   }),
   connect(
     {
-      isSaving: select(getCreate, "isFetching")
+      isSaving: historySelect(getCreate, "isFetching")
     },
     {
       onSubmit: ({ project: id, title, description }) =>

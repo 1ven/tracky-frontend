@@ -3,7 +3,7 @@ import { applySpec, path } from "ramda";
 import { connect } from "core/redux";
 import { compose, withProps } from "recompose";
 import { Confirm, modals } from "components/global/Modals";
-import { request, select } from "core/api";
+import { request, historySelect } from "core/api";
 import { getEntry as getRemove } from "api/tickets/remove";
 
 export default compose(
@@ -15,7 +15,7 @@ export default compose(
   }),
   connect(
     {
-      isConfirming: select(
+      isConfirming: historySelect(
         getRemove,
         "isFetching",
         applySpec({

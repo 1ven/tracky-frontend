@@ -16,8 +16,8 @@ export const type = transform(helpers.type);
 export const isLoading = (getApiEntry, condition) =>
   createSelector(
     [
-      select(getApiEntry, "isFetching", condition),
-      select(getApiEntry, "lastUpdated", condition)
+      historySelect(getApiEntry, "isFetching", condition),
+      historySelect(getApiEntry, "lastUpdated", condition)
     ],
     (isFetching, lastUpdated) => (!lastUpdated ? true : isFetching)
   );
