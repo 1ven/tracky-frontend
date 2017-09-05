@@ -17,6 +17,7 @@ import {
 } from "components/global";
 import { epic as sharedEpic } from "components/shared";
 import api, { reducer as apiReducer } from "api";
+import { reducer as entitiesReducer } from "../normalizr";
 
 declare var window: {
   __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: Function;
@@ -27,6 +28,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export default history =>
   createStore(
     combineReducers({
+      entities: entitiesReducer,
       api: apiReducer,
       pages: pagesReducer,
       global: globalReducer,

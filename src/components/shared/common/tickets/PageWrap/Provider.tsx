@@ -1,13 +1,18 @@
 import { compose } from "recompose";
+import { path } from "ramda";
+import { paramSelector } from "core/router";
+import { schemas, denormalized } from "core/normalizr";
 import { withRouter } from "react-router-dom";
 import { connect } from "core/redux";
-import { getProjectName } from "./selectors";
 import View, { Props as ViewProps } from "./View";
 
 export default compose<{}, Props>(
   withRouter,
   connect({
-    projectName: getProjectName
+    projectName: compose(
+      path(["name"]),
+      denormalized(paramSelector("projectId"), schemas.project)
+    )
   })
 )(View);
 

@@ -5,20 +5,24 @@ import { Ticket } from "tracky-types";
 import { load } from "core/decorators";
 import { isLoading, request, select } from "core/api";
 import { connect } from "core/redux";
+import { denormalized, schemas } from "core/normalizr";
 import { getEntry as getReadAll } from "api/projects/tickets/readAll";
 import View, { Props } from "./View";
 
 export default compose<any, any>(
   connect({
     isLoading: isLoading(getReadAll),
-    items: select(
-      getReadAll,
-      "data",
-      applySpec({
-        params: {
-          projectId: path(["match", "params", "projectId"])
-        }
-      })
+    items: denormalized(
+      select(
+        getReadAll,
+        "data",
+        applySpec({
+          params: {
+            projectId: path(["match", "params", "projectId"])
+          }
+        })
+      ),
+      [schemas.ticket]
     )
   }),
   load(({ match }) => request(getReadAll, match)),

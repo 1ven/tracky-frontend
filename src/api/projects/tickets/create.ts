@@ -1,8 +1,12 @@
 import { Ticket } from "tracky-types";
+import { withSchema, schemas } from "core/normalizr";
 
 export default {
   url: "/v1/entities/projects/:projectId/tickets",
-  method: "POST"
+  method: "POST",
+  mapPayload: {
+    success: withSchema(schemas.ticket)
+  }
 };
 
 export type Response = Ticket;
