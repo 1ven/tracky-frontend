@@ -14,12 +14,10 @@ export default ({
   projectId,
   showTicket,
   closeTicket,
-  activeTicket
+  activeId
 }: Props) =>
   <PageWrap
-    rightBar={
-      activeTicket && <Preview ticket={activeTicket} close={closeTicket} />
-    }
+    rightBar={activeId && <Preview id={activeId} close={closeTicket} />}
   >
     {isLoading
       ? <Loader />
@@ -31,9 +29,9 @@ export default ({
               {items.map((t, i) =>
                 <List.Row
                   key={i}
-                  isActive={activeTicket && t.id === activeTicket.id}
+                  isActive={activeId && t.id === activeId}
                   left={
-                    <List.Title onClick={() => showTicket(t)}>
+                    <List.Title onClick={() => showTicket(t.id)}>
                       {t.title}
                     </List.Title>
                   }
@@ -49,6 +47,6 @@ export type Props = {
   items: Ticket[];
   isLoading: boolean;
   closeTicket: () => void;
-  showTicket: (t: Ticket) => void;
-  activeTicket?: Ticket;
+  showTicket: (id: Ticket["id"]) => void;
+  activeId?: Ticket["id"];
 };

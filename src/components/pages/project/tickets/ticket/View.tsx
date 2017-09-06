@@ -7,19 +7,18 @@ import Item from "components/shared/common/tickets/Item";
 import PageWrap from "components/shared/common/tickets/PageWrap";
 import Header from "./Header";
 
-export default ({ title, description, isLoading, projectId }: Props) =>
+export default ({ isLoading, projectId, ticketId }: Props) =>
   <PageWrap>
     {isLoading
       ? <Loader />
       : <div>
           <Header projectId={projectId} />
-          <Item title={title} description={description} />
+          <Item id={ticketId} />
         </div>}
   </PageWrap>;
 
 export type Props = {
-  title: Ticket["title"];
+  ticketId: Ticket["id"];
   projectId: Project["id"];
   isLoading: boolean;
-  description?: Ticket["description"];
 };

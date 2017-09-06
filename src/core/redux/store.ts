@@ -7,15 +7,9 @@ import {
   combineEpics
 } from "redux-observable";
 import mostAdapter from "redux-observable-adapter-most";
-import {
-  reducer as pagesReducer,
-  epic as pagesEpic
-} from "components/pages/index";
-import {
-  reducer as globalReducer,
-  epic as globalEpic
-} from "components/global";
-import { epic as sharedEpic } from "components/shared";
+import { reducer as pagesReducer } from "components/pages/index";
+import { reducer as globalReducer } from "components/global";
+import { epic as uiEpic, reducer as uiReducer } from "components/index";
 import api, { reducer as apiReducer } from "api";
 import { reducer as entitiesReducer } from "../normalizr";
 
@@ -30,8 +24,11 @@ export default history =>
     combineReducers({
       entities: entitiesReducer,
       api: apiReducer,
+      // TODO: move to ui
       pages: pagesReducer,
       global: globalReducer,
+      //
+      ui: uiReducer,
       lib: combineReducers({
         form: formReducer,
         router: routerReducer
@@ -41,7 +38,7 @@ export default history =>
       applyMiddleware(
         routerMiddleware(history),
         apiMiddleware(api),
-        epicMiddleware(combineEpics(globalEpic, pagesEpic, sharedEpic), {
+        epicMiddleware(combineEpics(uiEpic), {
           adapter: mostAdapter
         })
       )

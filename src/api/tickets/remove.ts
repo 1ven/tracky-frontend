@@ -1,6 +1,7 @@
 export default {
   url: "/v1/entities/tickets/:ticketId",
-  method: "DELETE"
+  method: "DELETE",
+  history: true
 };
 
 export type Response = void;

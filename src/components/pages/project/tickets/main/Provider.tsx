@@ -26,9 +26,9 @@ export default compose<any, any>(
   withProps(({ match }) => ({
     projectId: match.params.projectId
   })),
-  withState("activeTicket", "setActiveTicket", void 0),
+  withState("activeId", "setActiveId", void 0),
   withHandlers({
-    showTicket: (p: any) => (t: Ticket) => p.setActiveTicket(t),
-    closeTicket: (p: any) => () => p.setActiveTicket(void 0)
+    showTicket: (p: any) => (id: Ticket["id"]) => p.setActiveId(id),
+    closeTicket: (p: any) => () => p.setActiveId(void 0)
   })
 )(View);

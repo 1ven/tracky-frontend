@@ -9,6 +9,7 @@ import { type } from "core/api";
 export default {
   url: "/v1/entities/tickets",
   method: "GET",
+  history: true,
   mapPayload: {
     success: withSchema([schemas.ticket])
   },

@@ -11,6 +11,21 @@ const colors = {
   red: warn
 };
 
+const sizes = {
+  normal: `
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 20px;
+  `,
+  small: `
+    font-size: 10px;
+    height: 18px;
+    line-height: 18px;
+    padding: 0 6px;
+  `
+};
+
 const addProps = withProps(
   ({ children, isLoading, color, onClick, inactive }: any) => ({
     onClick: e => (inactive ? e.preventDefault() : onClick && onClick(e)),
@@ -27,11 +42,7 @@ export default addProps(styled.button`
   color: #fff;
   background-color: ${prop("color")};
   cursor: pointer;
-  font-size: 14px;
-  height: 30px;
-  line-height: 30px;
   display: inline-block;
-  padding: 0 20px;
   border-radius: 2px;
   border: 0;
   outline: 0;
@@ -39,6 +50,7 @@ export default addProps(styled.button`
   ${({ inactive, color }: any) =>
     inactive
       ? `
+    transition: none;
     background-color: #ddd;
     cursor: not-allowed;
   `
@@ -47,6 +59,7 @@ export default addProps(styled.button`
       background-color: ${darken(0.1, color)};
     }
   `};
+  ${({ size = "normal" }: any) => sizes[size]};
 `);
 
 export type Props = {

@@ -4,6 +4,7 @@ import { schemas, withSchema } from "core/normalizr";
 export default {
   url: "/v1/entities/tickets/:ticketId",
   method: "GET",
+  history: true,
   mapPayload: {
     success: withSchema(schemas.ticket)
   }

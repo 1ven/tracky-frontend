@@ -8,6 +8,7 @@ import { getEntry as getCreate } from "./create";
 export default {
   url: "/v1/entities/projects",
   method: "GET",
+  history: true,
   mapPayload: {
     success: withSchema([schemas.project])
   },
