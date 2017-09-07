@@ -12,5 +12,12 @@ export default withField(
     font-size: 12px;
     padding: 8px;
     outline: 0;
+    ${({ disabled }: any) =>
+      disabled &&
+      `
+      cursor: not-allowed;
+      background-color: #f1f4f5;
+      color: #ccc;
+    `};
   `
 );

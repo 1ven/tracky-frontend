@@ -5,8 +5,8 @@ import withSubmit from "../withSubmit";
 export default compose(
   withProps(({ children }) => ({
     initialValues: {
-      title: children
+      description: children
     }
   })),
-  withSubmit("title")
+  withSubmit("description")
 )(View) as any;
