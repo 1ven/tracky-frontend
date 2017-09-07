@@ -13,11 +13,20 @@ export const historySelect = transform(helpers.historySelect);
 export const type = transform(helpers.type);
 // export const reducer = transform(helpers.reducer);
 
-export const isLoading = (getApiEntry, condition) =>
+export const historyIsLoading = (getApiEntry, condition) =>
   createSelector(
     [
       historySelect(getApiEntry, "isFetching", condition),
       historySelect(getApiEntry, "lastUpdated", condition)
     ],
-    (isFetching, lastUpdated) => (!lastUpdated ? true : isFetching)
+    selectLoading
   );
+
+export const isLoading = getApiEntry =>
+  createSelector(
+    [select(getApiEntry, "isFetching"), select(getApiEntry, "lastUpdated")],
+    selectLoading
+  );
+
+const selectLoading = (isFetching, lastUpdated) =>
+  !lastUpdated ? true : isFetching;

@@ -3,7 +3,7 @@ import { applySpec, path } from "ramda";
 import { compose, withProps, withState, withHandlers } from "recompose";
 import { Ticket } from "tracky-types";
 import { load } from "core/decorators";
-import { isLoading, request, historySelect } from "core/api";
+import { historyIsLoading, request, historySelect } from "core/api";
 import { connect } from "core/redux";
 import { denormalized, schemas } from "core/normalizr";
 import { getEntry as getReadAll } from "api/projects/tickets/readAll";
@@ -17,7 +17,7 @@ const ticketsCondition = applySpec({
 
 export default compose<any, any>(
   connect({
-    isLoading: isLoading(getReadAll, ticketsCondition),
+    isLoading: historyIsLoading(getReadAll, ticketsCondition),
     items: denormalized(historySelect(getReadAll, "data", ticketsCondition), [
       schemas.ticket
     ])

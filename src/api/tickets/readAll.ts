@@ -1,4 +1,3 @@
-import { isNil } from "ramda";
 import { updateState } from "redux-api-helpers";
 import { Ticket } from "tracky-types";
 import { withSchema, schemas } from "core/normalizr";
@@ -9,34 +8,25 @@ import { type } from "core/api";
 export default {
   url: "/v1/entities/tickets",
   method: "GET",
-  history: true,
   mapPayload: {
     success: withSchema([schemas.ticket])
   },
   reducer: (state, action) => {
-    if (!state[0]) return state;
+    if (!state.data) return state;
 
     switch (action.type) {
       case type(getCreate, "success"):
-        return updateState(
-          item => ({
-            ...item,
-            data: [...item.data, action.payload.body]
-          }),
-          isNil,
-          state
-        );
+        return {
+          ...state,
+          data: [...state.data, action.payload.body]
+        };
       case type(getRemove, "success"):
-        return updateState(
-          item => ({
-            ...item,
-            data: item.data.filter(
-              id => id !== action.payload.request.params.ticketId
-            )
-          }),
-          isNil,
-          state
-        );
+        return {
+          ...state,
+          data: state.data.filter(
+            id => id !== action.payload.request.params.ticketId
+          )
+        };
       default:
         return state;
     }
