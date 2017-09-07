@@ -2,7 +2,7 @@ import { applySpec, path, prop } from "ramda";
 import { compose, withProps } from "recompose";
 import { withForm, forms } from "core/form";
 import { connect } from "core/redux";
-import { select, request } from "core/api";
+import { historySelect, request } from "core/api";
 import { denormalized, schemas } from "core/normalizr";
 import { getEntry as getUpdate } from "api/tickets/update";
 import { modals } from "components/global/Modals";
@@ -25,19 +25,26 @@ export default compose(
         }),
         denormalized(getTicketId, schemas.ticket)
       ),
-      isSaving: select(getUpdate, "isFetching")
+      isSaving: historySelect(getUpdate, "isFetching", ({ data }) => ({
+        params: {
+          ticketId: +data.id
+        }
+      }))
     },
     (dispatch, { data }) => ({
       onSubmit: ({ project, title, description }) =>
         dispatch(
           request(getUpdate, {
             params: {
-              ticketId: data.id
+              ticketId: +data.id
             },
             body: {
               title,
               description,
               project
+            },
+            history: {
+              groupBy: "params"
             }
           })
         )
