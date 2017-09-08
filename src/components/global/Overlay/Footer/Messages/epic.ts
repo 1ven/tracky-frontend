@@ -3,14 +3,12 @@ import { create } from "./actions";
 
 const getTitle = path(["payload", "request", "meta", "title"]);
 
-const log = (window as any).__log;
-
 export default action$ =>
   action$
     .filter(
       allPass([
         // TODO: rely on @@api/ namespace in the future
-        log(compose(endsWith("/failure"), prop("type"))),
+        compose(endsWith("/failure"), prop("type")),
         compose(Boolean, getTitle)
       ])
     )
