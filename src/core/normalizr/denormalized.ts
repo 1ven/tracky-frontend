@@ -1,9 +1,8 @@
 import { denormalize } from "normalizr";
+import { prop } from "ramda";
+import { createSelector } from "reselect";
 
-export default (selector, schema) => (state, props) => {
-  const result = selector(state, props);
-
-  if (!result) return;
-
-  return denormalize(result, schema, state.entities);
-};
+export default (selector, schema) =>
+  createSelector([selector, prop("entities")], (result, entities) =>
+    denormalize(result, schema, entities)
+  );
