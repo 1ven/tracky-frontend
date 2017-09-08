@@ -2,11 +2,4 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
 export default (stateSpec?, dispatchSpec?) =>
-  connect(
-    stateSpec && createStructuredSelector(stateSpec),
-    dispatchSpec,
-    null,
-    {
-      pure: false
-    }
-  );
+  connect(stateSpec && createStructuredSelector(stateSpec), dispatchSpec);
