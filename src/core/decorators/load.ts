@@ -4,7 +4,7 @@ import { lifecycle, compose } from "recompose";
 
 export default (propsToAction, shouldDispatch = T) =>
   compose(
-    reactRedux.connect(state => ({ state })),
+    reactRedux.connect(),
     lifecycle({
       componentDidMount() {
         const { dispatch } = this.props as any;
