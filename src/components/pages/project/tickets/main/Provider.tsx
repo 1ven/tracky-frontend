@@ -23,7 +23,7 @@ export default compose<any, any>(
   withProps(({ match }) => ({
     projectId: match.params.projectId,
     initialParameters: {
-      status: 2
+      status: 0
     }
   })),
   withState("activeId", "setActiveId", void 0),
