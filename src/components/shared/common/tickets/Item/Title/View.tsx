@@ -6,7 +6,7 @@ import Input from "components/shared/kit/Input";
 const Title = styled.div`
   font-size: 20px;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 15px;
   cursor: pointer;
 `;
 

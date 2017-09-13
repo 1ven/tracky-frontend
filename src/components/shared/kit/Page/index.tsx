@@ -36,10 +36,9 @@ const ChildWrap = styled.div`
   height: 100%;
   padding: ${offset};
   position: relative;
-  > * {
-    padding-bottom: 50px;
-  }
 `;
+
+const Children = styled.div`padding-bottom: 50px;`;
 
 const StyledScrollbar = styled(Scrollbar)`
   flex: 1;
@@ -59,7 +58,9 @@ export default ({ leftBar, rightBar, children, title }: Props) =>
         </Leftbar>}
       <StyledScrollbar>
         <ChildWrap>
-          {children}
+          <Children>
+            {children}
+          </Children>
         </ChildWrap>
       </StyledScrollbar>
       {rightBar &&

@@ -3,7 +3,10 @@ import { Field } from "redux-form";
 import { mapProps, compose } from "recompose";
 
 export default compose(
-  Component => props => <Field component={Component} {...props} />,
+  Component => props =>
+    props.native
+      ? <Component {...props} />
+      : <Field component={Component} {...props} />,
   mapProps((props: any) => ({
     // Prob, it's a bug, need to provide just "props.input"
     ...props,

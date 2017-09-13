@@ -6,17 +6,11 @@ import { Ticket } from "tracky-types";
 import { replaceParams } from "core/utils";
 import { border } from "core/colors";
 import { paths } from "core/router";
-import Line from "components/shared/kit/Line";
-import Title from "components/shared/kit/Title";
+import Headline from "components/shared/kit/Headline";
 import Icon from "components/shared/kit/Icon";
 import Item from "components/shared/common/tickets/Item";
 
 const Wrap = styled.div`width: 350px;`;
-
-const Head = styled(Line)`
-  display: flex;
-  align-items: center;
-`;
 
 const Close = styled(Icon).attrs({
   name: "close"
@@ -26,21 +20,11 @@ const Close = styled(Icon).attrs({
   cursor: pointer;
 `;
 
-const Open = styled(nest(NavLink, Title))`
-  cursor: pointer;
-  color: #000;
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
-` as any;
-
 export default ({ id, close, link }: Props) =>
   <Wrap>
-    <Head>
-      <Open to={link}>Open full</Open>
-      <Close onClick={close} />
-    </Head>
+    <Headline right={<Close onClick={close} />}>
+      <NavLink to={link}>Open full</NavLink>
+    </Headline>
     <Item id={id} />
   </Wrap>;
 

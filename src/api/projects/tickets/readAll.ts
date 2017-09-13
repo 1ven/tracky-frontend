@@ -2,7 +2,7 @@ import { Ticket } from "tracky-types";
 import { schemas, withSchema } from "core/normalizr";
 
 export default {
-  url: "/v1/entities/projects/:projectId/tickets",
+  url: "/v1/entities/projects/:projectId/tickets?:query",
   method: "GET",
   history: true,
   mapPayload: {

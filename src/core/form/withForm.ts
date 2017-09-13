@@ -1,8 +1,8 @@
-import { path } from "ramda";
 import { reduxForm } from "redux-form";
+import getFormState from "./getFormState";
 
 export default (config?) =>
   reduxForm({
     ...config,
-    getFormState: path(["lib", "form"])
+    getFormState
   });

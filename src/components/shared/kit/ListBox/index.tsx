@@ -1,14 +1,7 @@
 import * as React from "react";
 import { withProps } from "recompose";
 import styled from "styled-components";
-import { border } from "core/colors";
-
-const Wrap = styled.div`
-  background-color: #fff;
-  border-radius: 2px;
-  border: 1px solid ${border};
-  padding: 6px;
-`;
+import Box from "components/shared/kit/Box";
 
 const Item = styled.div`
   font-size: 14px;
@@ -26,7 +19,7 @@ export default withProps<any, Props>(({ items }) => ({
       {item}
     </Item>
   )
-}))(Wrap);
+}))(Box);
 
 export type Props = {
   items: React.ReactNode[];

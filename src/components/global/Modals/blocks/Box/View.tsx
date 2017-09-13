@@ -17,7 +17,7 @@ const Close = styled(Icon).attrs({ name: "close" })`
   margin-left: auto;
   cursor: pointer;
   font-size: 16px;
-`;
+` as any;
 
 const Wrap = styled.div`
   background-color: #fff;

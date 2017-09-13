@@ -60,6 +60,7 @@
     "most": "^1.5.1",
     "normalizr": "^3.2.3",
     "polished": "^1.4.1",
+    "qs": "^6.5.1",
     "ramda-fantasy": "^0.8.0",
     "react": "^15.6.1",
     "react-click-outside": "^2.3.1",

@@ -6,6 +6,8 @@ import { is } from "ramda";
 
 const Link = styled.div`display: flex;`;
 
+const DropdownWrap = styled.div`position: relative;`;
+
 export default compose(
   withState("isActive", "setActivity", ({ isActive }) => isActive || false),
   enhanceWithClickOutside,
@@ -25,9 +27,9 @@ export default compose(
     >
       {isFunc(link) ? link(isActive) : link}
     </Link>
-    <div>
+    <DropdownWrap>
       {isActive && (isFunc(body) ? body(() => setActivity(false)) : body)}
-    </div>
+    </DropdownWrap>
   </div>
 ) as React.ComponentClass<Props>;
 
