@@ -38,7 +38,10 @@ const ChildWrap = styled.div`
   position: relative;
 `;
 
-const Children = styled.div`padding-bottom: 50px;`;
+const Children = styled.div`
+  padding-bottom: 50px;
+  height: 100%;
+`;
 
 const StyledScrollbar = styled(Scrollbar)`
   flex: 1;

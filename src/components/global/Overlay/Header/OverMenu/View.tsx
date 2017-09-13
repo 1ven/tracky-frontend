@@ -5,6 +5,7 @@ import { paths } from "core/router";
 import { replaceParams } from "core/utils";
 import { primary } from "core/colors";
 import Icon from "components/shared/kit/Icon";
+import Scrollbar from "components/shared/kit/Scrollbar";
 import Search from "./Search";
 
 const Wrap = styled.div`
@@ -42,11 +43,12 @@ const Circle = styled(Icon).attrs({ name: "add_circle_outline" })`
   color: #fff;
 `;
 
+const ProjectsWrap = styled.div`margin: 0 -14px;`;
+
 const Project = styled(NavLink)`
   color: #fff;
   font-size: 14px;
   padding: 6px 14px;
-  margin: 0 -14px;
   cursor: pointer;
   display: block;
   text-decoration: none;
@@ -65,7 +67,8 @@ export default ({ projects, onProjectClick, onAddClick }) =>
         Projects<Circle onClick={onAddClick} />
       </Title>
       <Search />
-      <div>
+      <ProjectsWrap>
+        {/* <Scrollbar> */}
         {projects.map((p, i) =>
           <Project
             key={i}
@@ -75,6 +78,7 @@ export default ({ projects, onProjectClick, onAddClick }) =>
             {p.name}
           </Project>
         )}
-      </div>
+        {/* </Scrollbar> */}
+      </ProjectsWrap>
     </Item>
   </Wrap>;

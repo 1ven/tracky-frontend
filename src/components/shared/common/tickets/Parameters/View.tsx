@@ -19,7 +19,7 @@ const Dropdown = styled(Box)`
   position: absolute;
   top: 0;
   right: 0;
-  margin-top: 12px;
+  margin-top: 14px;
   z-index: 1;
 `;
 

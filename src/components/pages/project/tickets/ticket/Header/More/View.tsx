@@ -18,10 +18,7 @@ const Dropdown = styled(ListBox)`
   margin-top: 16px;
 `;
 
-const Wrap = styled.div`
-  margin-left: auto;
-  position: relative;
-`;
+const Wrap = styled.div`position: relative;`;
 
 export default ({ onEditClick }) =>
   <Wrap>
