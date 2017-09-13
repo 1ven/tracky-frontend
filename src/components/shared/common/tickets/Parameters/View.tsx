@@ -19,24 +19,28 @@ const Dropdown = styled(Box)`
   position: absolute;
   top: 0;
   right: 0;
-  margin-top: 2px;
+  margin-top: 12px;
   z-index: 1;
 `;
 
+const Wrap = styled.div`position: relative;`;
+
 export default ({ handleSubmit }) =>
-  <Toggle
-    link={<Cog />}
-    body={
-      <Dropdown>
-        <form onSubmit={handleSubmit}>
-          <Item title="Status:">
-            <Select name="status" size="small">
-              <option value={0}>To Do</option>
-              <option value={1}>Done</option>
-              <option value={2}>Won't do</option>
-            </Select>
-          </Item>
-        </form>
-      </Dropdown>
-    }
-  />;
+  <Wrap>
+    <Toggle
+      link={<Cog />}
+      body={
+        <Dropdown>
+          <form onSubmit={handleSubmit}>
+            <Item title="Status:">
+              <Select name="status" size="small">
+                <option value={0}>To Do</option>
+                <option value={1}>Done</option>
+                <option value={2}>Won't do</option>
+              </Select>
+            </Item>
+          </form>
+        </Dropdown>
+      }
+    />
+  </Wrap>;

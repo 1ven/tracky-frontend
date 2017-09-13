@@ -10,6 +10,7 @@ const Dropdown = styled(ListBox)`
   right: 0;
   z-index: 1;
   text-align: left;
+  margin-top: 16px;
 ` as any;
 
 const MoreWrap = styled.div`position: relative;`;

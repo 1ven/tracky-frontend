@@ -22,5 +22,11 @@ export default ({ children, isSubmitting, initialValues, onSubmit }) =>
       </Title>
     }
   >
-    <Input type="text" name="title" size="small" disabled={isSubmitting} />
+    <Input
+      autoFocus
+      type="text"
+      name="title"
+      size="small"
+      disabled={isSubmitting}
+    />
   </InlineEdit>;
